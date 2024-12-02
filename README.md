@@ -1,4 +1,4 @@
-# Paxafe Starter Kit
+# Paxafe Starter Kit for Dev
 
 Click on `Use this template` to copy the Mintlify starter kit. The starter kit contains examples including
 
