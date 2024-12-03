@@ -1,0 +1,63 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Temperature Range API",
+    "version": "1.0.0"
+  },
+  "components": {
+    "schemas": {
+      "TemperatureRange": {
+        "type": "object",
+        "properties": {
+          "pte": {
+            "oneOf": [
+              {"type": "string"},
+              {"type": "null"}
+            ],
+            "description": "Predicted Temperature Excursion status",
+            "examples": [
+              "normal temperature",
+              "alarm: temp below low_limit",
+              "alarm: temp above up_limit",
+              "warning: temp approaching low_limit",
+              "warning: temp approaching up_limit"
+            ]
+          },
+          "excursion": {
+            "type": "boolean",
+            "description": "Whether a temperature excursion has occurred",
+            "example": false
+          },
+          "time_out_of_range": {
+            "type": "integer",
+            "description": "Time spent out of the acceptable temperature range in minutes",
+            "example": 540
+          },
+          "remaining_time_out_of_range": {
+            "type": "integer",
+            "description": "Remaining time allowed out of the acceptable temperature range in minutes",
+            "example": 60
+          },
+          "remaining_shelf_life": {
+            "type": "string",
+            "description": "Remaining shelf life of the product",
+            "example": "10%"
+          },
+          "num_excursions": {
+            "type": "integer",
+            "description": "Number of temperature excursions that have occurred"
+          },
+          "low_limit": {
+            "type": "integer",
+            "description": "Lower limit of Product temperature tange"
+          },
+          "up_limit": {
+            "type": "integer",
+            "description": "Upper limit of Product temperature tange",
+            "example": 8
+          }
+        }
+      }
+    }
+  }
+}
