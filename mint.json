@@ -19,7 +19,7 @@
   "modeToggle": {
     "default": "dark"
   },
-  "font":{
+  "font": {
     "headings": {
       "family": "N27 webfont",
       "url": "https://cdn.prod.website-files.com/635f9c91c8f1b215c5b75e82/638645657bf4662312d71540_n27-regular-webfont.woff2",
@@ -66,6 +66,12 @@
       "name": "Blog",
       "icon": "newspaper",
       "url": "https://mintlify.com/blog"
+    },
+    {
+      "name": "API Reference",
+      "openapi": "/path/to/openapi.json",
+      "url": "api-reference",
+      "icon": "square-terminal"
     }
   ],
   "navigation": [
@@ -98,21 +104,8 @@
       ]
     }
   ],
-  "footerSocials":{
+  "footerSocials": {
     "linkedin": "https://www.linkedin.com/company/paxafe/",
     "x": "https://twitter.com/PAXAFE1"
   }
-
 }
-
-{
-  "anchors": [
-    {
-      "name": "API Reference",
-      "openapi": "/path/to/openapi.json",
-      "url": "api-reference",
-      "icon": "square-terminal"
-    }
-  ]
-}
-
