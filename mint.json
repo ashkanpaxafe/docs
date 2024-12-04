@@ -1,31 +1,51 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Paxafe",
   "logo": {
     "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "light": "/logo/light.svg",
+    "href": "https://www.paxafe.com/"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#1a4651",
+    "light": "#d4ff9d",
+    "dark": "#1a4651",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#1a4651",
+      "to": "#d4ff9d"
     }
+  },
+  "modeToggle": {
+    "default": "dark"
+  },
+  "font":{
+    "headings": {
+      "family": "N27 webfont",
+      "url": "https://cdn.prod.website-files.com/635f9c91c8f1b215c5b75e82/638645657bf4662312d71540_n27-regular-webfont.woff2",
+      "format": "woff2",
+      "weight": 400
+    }
+  },
+  "background": {
+    "style": "grid"
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "Login",
+      "url": "https://getcontxt.paxafe.com/"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Book a Demo",
+    "url": "https://www.paxafe.com/book-demo",
+    "arrow": false
   },
   "tabs": [
+    {
+      "name": "Live Risk",
+      "url": "docs/live-risk"
+    },
     {
       "name": "API Reference",
       "url": "api-reference"
@@ -33,16 +53,14 @@
   ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "openapi": "/LiveRiskResponse-3.json",
-      "openapi": "/TemperatureRange.3.json",
-      "url": "https://mintlify.com/docs"
+      "name": "FAQs",
+      "icon": "circle-question",
+      "url": "https://getcontxt.paxafe.com/help"
     },
     {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "name": "Contact Us",
+      "icon": "headset",
+      "url": "https://www.paxafe.com/contact"
     },
     {
       "name": "Blog",
@@ -54,20 +72,15 @@
     {
       "group": "Get Started",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "docs/live-risk/rohn80lm99wde-error-handling",
+        "docs/live-risk/k8jcprvikyc01-live-risk-scenarios",
+        "docs/live-risk/kxr0c70l9dhvk-test-script"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Change Log & Release Notes",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "docs/live-risk/v8vi53poao6eb-release-notes"
       ]
     },
     {
@@ -85,4 +98,9 @@
       ]
     }
   ],
- 
+  "footerSocials":{
+    "linkedin": "https://www.linkedin.com/company/paxafe/",
+    "x": "https://twitter.com/PAXAFE1"
+  }
+
+}

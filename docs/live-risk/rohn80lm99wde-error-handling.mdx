@@ -1,0 +1,22 @@
+---
+title: Error Handling
+description: "As any standard REST API, following workflows can be considered in case standard error codes are received when using Live Risk API:"
+---
+
+### Server Error Responses
+
+**500 Internal Server Error**: Report error along with Record Request details and continue processing next Record
+
+**501 Not Implemented**: Open a ticket through your PAXAFE customer service portal or contact [support@paxafe.com](mailto:support@paxafe.com)"
+
+**502 Bad Gateway**: Retry API request upto 5 times (consider frequency of retry at an interval of +5sec, +15sec, +30sec, +45sec, +60sec). If error persists, report error along with Record Request details and continue processing next Record
+
+**503 Service Unavailable**: Retry API request upto 5 times (consider frequency of retry at an interval of +5sec, +15sec, +30sec, +45sec, +60sec). If error persists, report error along with Record Request details and continue processing next Record
+
+**504 Gateway Timeout**: Retry API request upto 5 times (consider frequency of retry at an interval of +5sec, +15sec, +30sec, +45sec, +60sec). If error persists, report error along with Record Request details and continue processing next Record
+
+**505 HTTP Version Not Supported**: Open a ticket through your PAXAFE customer service portal or contact [support@paxafe.com](mailto:support@paxafe.com)"
+
+### Client Error Responses
+
+40*( 400, 403, etc) - Open a ticket through your PAXAFE customer service portal or contact [support@paxafe.com](mailto:support@paxafe.com)"
