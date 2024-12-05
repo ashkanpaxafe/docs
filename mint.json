@@ -66,12 +66,6 @@
       "name": "Blog",
       "icon": "newspaper",
       "url": "https://mintlify.com/blog"
-    },
-    {
-      "name": "API Reference",
-      "openapi": "/path/to/openapi.json",
-      "url": "api-reference",
-      "icon": "square-terminal"
     }
   ],
   "navigation": [
@@ -90,17 +84,27 @@
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "APIS",
       "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        {
+          "group": "PAXAFE Live Risk API",
+          "pages": [
+            "docs/live-risk/f2c0906f30b2f-paxafe-live-risk-api",
+            {
+              "group": "liverisk",
+              "pages": [
+                "docs/live-risk/e518dcfdf66c4-paxafe-live-risk-api"
+              ]
+            },
+            {
+              "group": "Schemas",
+              "pages": [
+                "docs/live-risk/3b7f17bf57aaf-live-risk-response",
+                "docs/live-risk/067924037545a-temperature-range"
+              ]
+            }
+          ]
+        }
       ]
     }
   ],

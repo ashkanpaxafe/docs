@@ -1,0 +1,803 @@
+---
+title: PAXAFE Live Risk API
+api: POST https://api.paxafe.com/live-risk/getLiveStatus
+contentType: multipart/form-data
+description: "Monitoring Simplified. Prevent product waste & ensure on-time delivery. Unlock loss prevention, Reduce monitoring burden, and build the foundation for scaling IoT."
+---
+
+ Live Risk recommends Act, Watch or Ignore for each shipment and applied at each shipments' device ping. API response Includes specific risk factors and contextual risk summary statement. Multiple risk factors evaluated including Predicted Time of Arrival (PTA), Predicted Temperature Excursion (PTE), internal SLA's/contracts and external risk factors (weather, traffic, geopolitical)
+
+
+## Request
+<ParamField header="Security:API key" type="string" required>
+  An API key is required for authentication. Include the token in a header parameter called `x-api-key`.
+
+  x-api-key: `123`
+</ParamField>
+
+### Body
+
+<ParamField body="shipment_id" type="string" required>
+  Unique identifier for the shipment
+
+  Example: `SHIP12345`
+</ParamField>
+
+<ParamField body="device_time" type="integer" required>
+  Device timestamp in epoch time
+
+  Example: `1627848302`
+</ParamField>
+
+<ParamField body="device_id" type="string">
+  Unique identifier for the device
+
+  Example: `DEV67890`
+</ParamField>
+
+<ParamField body="latitude" type="number">
+  Latitude of the current location. If missing, only temperature_impact will be present in the output response.
+
+  Example: `37.7749`
+</ParamField>
+
+<ParamField body="longitude" type="number">
+  Longitude of the current location. If missing, only temperature_impact will be present in the output response.
+
+  Example: `-122.4194`
+</ParamField>
+
+<ParamField body="temperature" type="number">
+  Current temperature in Celsius. If missing, only delivery_impact and external_impact will be present in the output response.
+
+  Example: `23.5`
+</ParamField>
+
+<ParamField body="lane_id" type="string">
+  Lane identifier or name.
+
+  Example: `LANE456`
+</ParamField>
+
+<ParamField body="customer_lane_id" type="string">
+  Customer lane ID can be input as an alternative for lane_id.
+
+  Example: `875254`
+</ParamField>
+
+<ParamField body="temperature_profile" type="array">
+  Temperature profile data. List of dictionaries with temperature range information. Not mandatory if temperature is missing.
+
+  <Expandable title="Temperature Profile Object">
+    <ParamField body="name" type="string" required>
+      Product name, generic range name, or 'overall' if only one range is tracked
+
+      Example: `overall`
+    </ParamField>
+    <ParamField body="time_outside_range" type="integer" required>
+      Time allowed outside temperature range in minutes. -1 if not available or applicable.
+
+      Example: `120`
+    </ParamField>
+    <ParamField body="low" type="integer" required>
+      Lower temperature threshold in degrees Celsius.
+
+      Example: `0`
+    </ParamField>
+    <ParamField body="high" type="integer" required>
+      Upper temperature threshold in degrees Celsius.
+
+      Example: `25`
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="product_family" type="string">
+  Optional field for product family.
+
+  Example: `200m`
+</ParamField>
+
+<ParamField body="contracted_delivery_time" type="integer">
+  Contracted transit time in minutes.
+
+  Example: `1200`
+</ParamField>
+
+<ParamField body="delivery_date" type="string">
+  Delivery date and time in UTC.
+
+  Example: `2024-05-21T21:45:06Z`
+</ParamField>
+
+<ParamField body="journey_config" type="array">
+  <Expandable title="Journey Config Object">
+    <ParamField body="id" type="integer">
+      Example: `1`
+    </ParamField>
+    <ParamField body="name" type="string">
+      Example: `ORD`
+    </ParamField>
+    <ParamField body="type" type="string" required>
+      Allowed values: origin, destination, stop
+
+      Example: `origin`
+    </ParamField>
+    <ParamField body="latitude" type="number" required>
+      Example: `-49.324`
+    </ParamField>
+    <ParamField body="longitude" type="number" required>
+      Example: `34.89`
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="shipment_config" type="object">
+  Shipment configuration data.
+
+  <Expandable title="Shipment Config Object">
+    <ParamField body="carrier_name" type="string">
+      Example: `UPS`
+    </ParamField>
+    <ParamField body="packaging" type="string">
+      Example: `Envirotainer`
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+## Responses
+
+`200`
+
+The Live Risk Response has a few status codes which help in understanding whether the request was well formed or not. Following is a quick reference to the status codes :
+
+- PXSC100 : When both location and temperature are present in the request
+- PXSC101 : When only temperature is present in the request
+- PXSC102 : When only location is present in the request
+- PXER100 : When `c` is missing or null in the request
+- PXER101 : When `c` is missing or null in the request
+- PXER102 : When `c` and `c` are missing or null in the request
+
+The following status codes are related to the PTA (Predicted Time of Arrival) fields of Live Risk. They will be found in place of a PTA prediction in the Live Risk response.
+
+- PXER101 : Incorrect `c` format
+- PXER102 : Incorrect `c` format
+- PXER103 : Incorrect timestamp format
+- PXER104 : Incorrect `c`/`c` format
+- PXER105 : When `c` is missing in request
+- PXER106 : Unable to calculate PTA
+- PXER108 : When the onboarded lane data is missing required fields - lane needs to be refreshed
+- PXER109 : When the onboarded lane is missing required data - lane needs to be refreshed.
+- PXER110 : When `c` is None in request
+Reference to detailed scenarios [here](https://contxt.stoplight.io/docs/live-risk/docs/testdoc.md)
+
+### Body
+
+
+<ResponseField name="status_code" type="string">
+Status of the response
+Allowed values: `PXSC100`, `PXSC101`, `PXSC102`, `PXER100`, `PXER101`, `PXER102`
+
+Example: `PXSC100`
+</ResponseField>
+
+<ResponseField name="shipment_id" type="string">
+ Unique identifier for the shipment
+
+Example: `SHIP12345`
+</ResponseField>
+
+<ResponseField name="device_id" type="string">
+Unique identifier for the device
+
+Example: `DEV67890`
+</ResponseField>
+
+<ResponseField name="risk_level" type="string">
+Overall risk level for the shipment
+Allowed values: Ignore, Watch, Act
+
+Example: `Ignore`
+</ResponseField>
+
+<ResponseField name="risk_summary" type="string">
+Contextual statement about the overall state of the shipment
+
+`Example: The shipment is predicted to breach the temperature limit 2-10 C in the next 120 minutes, the shipment is dwelling at the current leg longer than usual but may still arrive at the destination on time.`
+</ResponseField>
+
+<ResponseField name="delivery_impact" type="object">
+  Impact on delivery details
+  <Expandable title="Properties">
+    <ResponseField name="risk_level" type="string">
+      Risk level for delivery impact
+      <Expandable title="Allowed values">
+        - `Ignore`
+        - `Watch`
+        - `Act`
+
+        Example: `Ignore`
+      </Expandable>
+    </ResponseField>
+ </Expandable>
+</ResponseField>
+    <ResponseField name="leg" type="object">
+      Current leg details
+    </ResponseField>
+
+    <ResponseField name="final_destination" type="object">
+      Final destination details
+    </ResponseField>
+
+    <ResponseField name="temperature_impact" type="object">
+      Impact of temperature on the shipment
+      <Expandable title="Properties">
+        <ResponseField name="risk_level" type="string">
+          Risk level for temperature impact
+          <Expandable title="Allowed values">
+            - `Ignore`
+            - `Watch`
+            - `Act`
+
+            Example: `Watch`
+          </Expandable>
+        </ResponseField>
+
+        <ResponseField name="current_temperature" type="number">
+          Current temperature of the shipment in Celsius
+
+          Example: `23.5`
+        </ResponseField>
+
+        <ResponseField name="mean_temperature_at_location_historical" type="number">
+          Historical average temperature at the current location in Celsius. Available only for onboarded lanes.
+
+          Example: `22.8`
+        </ResponseField>
+
+        <ResponseField name="std_deviation_temperature_at_location_historical" type="number">
+          Standard deviation of historical temperature at the current location in Celsius. Available only for onboarded lanes.
+
+          Example: `1.2`
+        </ResponseField>
+
+        <ResponseField name="temp_ranges" type="object">
+          Temperature profile data. The number of ranges will depend on the temperature profile specified in the input.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="external_impact" type="object">
+      External factors impacting the shipment
+      <Expandable title="Properties">
+        <ResponseField name="risk_level" type="string">
+          Risk level for external impact
+          <Expandable title="Allowed values">
+            - `Ignore`
+            - `Watch`
+            - `Act`
+
+            Example: `Watch`
+          </Expandable>
+        </ResponseField>
+
+        <ResponseField name="event_summary" type="array">
+          Summary of the external events
+
+          Example: `["INMET issues alert starting on: 09/30/2024 10:32. Slight health risk. Temperature 5°C above average for a period of 02 to 03 days.","INMET issues alert starting on: 09/30/2024 09:33. Relative humidity varying between 30% and 20%. Low risk of forest fires and health issues."]`
+        </ResponseField>
+
+        <ResponseField name="impacted_location" type="array">
+          Locations impacted by the external events
+
+          Example: `["Sao Paulo","Technopark"]`
+        </ResponseField>
+
+        <ResponseField name="event_type" type="array">
+          Types of the external events
+
+          Example: `["weather:Heat wave","weather:Low Humidity"]`
+        </ResponseField>
+
+        <ResponseField name="event_start_time" type="array">
+          Start time of external event
+
+        </ResponseField>
+
+        <ResponseField name="event_expiry" type="array">
+          Expiry times of the external events
+
+          Example: `["2024-10-02T23:59:00-03:00","2024-09-30T23:00:00-03:00"]`
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="location_status" type="string">
+      Description of where the shipment is relative to predictions
+    </ResponseField>
+
+<RequestExample>
+  ```json cuRL
+curl --request POST \
+  --url https://api.paxafe.com/live-risk/getLiveStatus \
+  --header 'Accept: application/json' \
+  --header 'Content-Type: application/json' \
+  --header 'x-api-key: 123' \
+  --data '{
+  "shipment_id": "SHIP12345",
+  "device_time": 1627848302,
+  "device_id": "DEV67890",
+  "latitude": 37.7749,
+  "longitude": -122.4194,
+  "temperature": 23.5,
+  "lane_id": "LANE456",
+  "customer_lane_id": "875254",
+  "temperature_profile": [
+    {
+      "name": "overall",
+      "time_outside_range": 120,
+      "low": 0,
+      "high": 25,
+      "product_family": "200m"
+    }
+  ],
+  "contracted_delivery_time": 1200,
+  "delivery_date": "2024-05-21T21:45:06Z",
+  "journey_config": [
+    {
+      "id": 1,
+      "name": "ORD",
+      "type": "origin",
+      "latitude": -49.324,
+      "longitude": 34.89
+    },
+    {
+      "id": 2,
+      "name": "DFW",
+      "type": "stop",
+      "latitude": 32.898,
+      "longitude": -97.036
+    },
+    {
+      "id": 3,
+      "name": "LAX",
+      "type": "destination",
+      "latitude": 33.939,
+      "longitude": -118.404
+    }
+  ],
+  "shipment_config": {
+    "carrier_name": "UPS",
+    "packaging": "Envirotainer"
+  }
+}'
+  ```
+```go Go
+package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io"
+)
+
+func main() {
+
+	url := "https://api.paxafe.com/live-risk/getLiveStatus"
+
+	payload := strings.NewReader("{\n  \"shipment_id\": \"SHIP12345\",\n  \"device_time\": 1627848302,\n  \"device_id\": \"DEV67890\",\n  \"latitude\": 37.7749,\n  \"longitude\": -122.4194,\n  \"temperature\": 23.5,\n  \"lane_id\": \"LANE456\",\n  \"customer_lane_id\": \"875254\",\n  \"temperature_profile\": [\n    {\n      \"name\": \"overall\",\n      \"time_outside_range\": 120,\n      \"low\": 0,\n      \"high\": 25,\n      \"product_family\": \"200m\"\n    }\n  ],\n  \"contracted_delivery_time\": 1200,\n  \"delivery_date\": \"2024-05-21T21:45:06Z\",\n  \"journey_config\": [\n    {\n      \"id\": 1,\n      \"name\": \"ORD\",\n      \"type\": \"origin\",\n      \"latitude\": -49.324,\n      \"longitude\": 34.89\n    },\n    {\n      \"id\": 2,\n      \"name\": \"DFW\",\n      \"type\": \"stop\",\n      \"latitude\": 32.898,\n      \"longitude\": -97.036\n    },\n    {\n      \"id\": 3,\n      \"name\": \"LAX\",\n      \"type\": \"destination\",\n      \"latitude\": 33.939,\n      \"longitude\": -118.404\n    }\n  ],\n  \"shipment_config\": {\n    \"carrier_name\": \"UPS\",\n    \"packaging\": \"Envirotainer\"\n  }\n}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("Accept", "application/json")
+	req.Header.Add("x-api-key", "123")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := io.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+```C C
+CURL *hnd = curl_easy_init();
+
+curl_easy_setopt(hnd, CURLOPT_CUSTOMREQUEST, "POST");
+curl_easy_setopt(hnd, CURLOPT_URL, "https://api.paxafe.com/live-risk/getLiveStatus");
+
+struct curl_slist *headers = NULL;
+headers = curl_slist_append(headers, "Content-Type: application/json");
+headers = curl_slist_append(headers, "Accept: application/json");
+headers = curl_slist_append(headers, "x-api-key: 123");
+curl_easy_setopt(hnd, CURLOPT_HTTPHEADER, headers);
+
+curl_easy_setopt(hnd, CURLOPT_POSTFIELDS, "{\n  \"shipment_id\": \"SHIP12345\",\n  \"device_time\": 1627848302,\n  \"device_id\": \"DEV67890\",\n  \"latitude\": 37.7749,\n  \"longitude\": -122.4194,\n  \"temperature\": 23.5,\n  \"lane_id\": \"LANE456\",\n  \"customer_lane_id\": \"875254\",\n  \"temperature_profile\": [\n    {\n      \"name\": \"overall\",\n      \"time_outside_range\": 120,\n      \"low\": 0,\n      \"high\": 25,\n      \"product_family\": \"200m\"\n    }\n  ],\n  \"contracted_delivery_time\": 1200,\n  \"delivery_date\": \"2024-05-21T21:45:06Z\",\n  \"journey_config\": [\n    {\n      \"id\": 1,\n      \"name\": \"ORD\",\n      \"type\": \"origin\",\n      \"latitude\": -49.324,\n      \"longitude\": 34.89\n    },\n    {\n      \"id\": 2,\n      \"name\": \"DFW\",\n      \"type\": \"stop\",\n      \"latitude\": 32.898,\n      \"longitude\": -97.036\n    },\n    {\n      \"id\": 3,\n      \"name\": \"LAX\",\n      \"type\": \"destination\",\n      \"latitude\": 33.939,\n      \"longitude\": -118.404\n    }\n  ],\n  \"shipment_config\": {\n    \"carrier_name\": \"UPS\",\n    \"packaging\": \"Envirotainer\"\n  }\n}");
+
+CURLcode ret = curl_easy_perform(hnd);
+```
+```Kotlin Kotlin
+val client = OkHttpClient()
+
+val mediaType = MediaType.parse("application/json")
+val body = RequestBody.create(mediaType, "{\n  \"shipment_id\": \"SHIP12345\",\n  \"device_time\": 1627848302,\n  \"device_id\": \"DEV67890\",\n  \"latitude\": 37.7749,\n  \"longitude\": -122.4194,\n  \"temperature\": 23.5,\n  \"lane_id\": \"LANE456\",\n  \"customer_lane_id\": \"875254\",\n  \"temperature_profile\": [\n    {\n      \"name\": \"overall\",\n      \"time_outside_range\": 120,\n      \"low\": 0,\n      \"high\": 25,\n      \"product_family\": \"200m\"\n    }\n  ],\n  \"contracted_delivery_time\": 1200,\n  \"delivery_date\": \"2024-05-21T21:45:06Z\",\n  \"journey_config\": [\n    {\n      \"id\": 1,\n      \"name\": \"ORD\",\n      \"type\": \"origin\",\n      \"latitude\": -49.324,\n      \"longitude\": 34.89\n    },\n    {\n      \"id\": 2,\n      \"name\": \"DFW\",\n      \"type\": \"stop\",\n      \"latitude\": 32.898,\n      \"longitude\": -97.036\n    },\n    {\n      \"id\": 3,\n      \"name\": \"LAX\",\n      \"type\": \"destination\",\n      \"latitude\": 33.939,\n      \"longitude\": -118.404\n    }\n  ],\n  \"shipment_config\": {\n    \"carrier_name\": \"UPS\",\n    \"packaging\": \"Envirotainer\"\n  }\n}")
+val request = Request.Builder()
+  .url("https://api.paxafe.com/live-risk/getLiveStatus")
+  .post(body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("Accept", "application/json")
+  .addHeader("x-api-key", "123")
+  .build()
+
+val response = client.newCall(request).execute()
+```
+```Ruby Ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://api.paxafe.com/live-risk/getLiveStatus")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+
+request = Net::HTTP::Post.new(url)
+request["Content-Type"] = 'application/json'
+request["Accept"] = 'application/json'
+request["x-api-key"] = '123'
+request.body = "{\n  \"shipment_id\": \"SHIP12345\",\n  \"device_time\": 1627848302,\n  \"device_id\": \"DEV67890\",\n  \"latitude\": 37.7749,\n  \"longitude\": -122.4194,\n  \"temperature\": 23.5,\n  \"lane_id\": \"LANE456\",\n  \"customer_lane_id\": \"875254\",\n  \"temperature_profile\": [\n    {\n      \"name\": \"overall\",\n      \"time_outside_range\": 120,\n      \"low\": 0,\n      \"high\": 25,\n      \"product_family\": \"200m\"\n    }\n  ],\n  \"contracted_delivery_time\": 1200,\n  \"delivery_date\": \"2024-05-21T21:45:06Z\",\n  \"journey_config\": [\n    {\n      \"id\": 1,\n      \"name\": \"ORD\",\n      \"type\": \"origin\",\n      \"latitude\": -49.324,\n      \"longitude\": 34.89\n    },\n    {\n      \"id\": 2,\n      \"name\": \"DFW\",\n      \"type\": \"stop\",\n      \"latitude\": 32.898,\n      \"longitude\": -97.036\n    },\n    {\n      \"id\": 3,\n      \"name\": \"LAX\",\n      \"type\": \"destination\",\n      \"latitude\": 33.939,\n      \"longitude\": -118.404\n    }\n  ],\n  \"shipment_config\": {\n    \"carrier_name\": \"UPS\",\n    \"packaging\": \"Envirotainer\"\n  }\n}"
+
+response = http.request(request)
+puts response.read_body
+```
+
+```Swift Swift
+import Foundation
+
+let headers = [
+  "Content-Type": "application/json",
+  "Accept": "application/json",
+  "x-api-key": "123"
+]
+let parameters = [
+  "shipment_id": "SHIP12345",
+  "device_time": 1627848302,
+  "device_id": "DEV67890",
+  "latitude": 37.7749,
+  "longitude": -122.4194,
+  "temperature": 23.5,
+  "lane_id": "LANE456",
+  "customer_lane_id": "875254",
+  "temperature_profile": [
+    [
+      "name": "overall",
+      "time_outside_range": 120,
+      "low": 0,
+      "high": 25,
+      "product_family": "200m"
+    ]
+  ],
+  "contracted_delivery_time": 1200,
+  "delivery_date": "2024-05-21T21:45:06Z",
+  "journey_config": [
+    [
+      "id": 1,
+      "name": "ORD",
+      "type": "origin",
+      "latitude": -49.324,
+      "longitude": 34.89
+    ],
+    [
+      "id": 2,
+      "name": "DFW",
+      "type": "stop",
+      "latitude": 32.898,
+      "longitude": -97.036
+    ],
+    [
+      "id": 3,
+      "name": "LAX",
+      "type": "destination",
+      "latitude": 33.939,
+      "longitude": -118.404
+    ]
+  ],
+  "shipment_config": [
+    "carrier_name": "UPS",
+    "packaging": "Envirotainer"
+  ]
+] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.paxafe.com/live-risk/getLiveStatus")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error as Any)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response Example: All-Risk-Levels-Ignore
+  {
+  "shipment_id": "SHIP12345",
+  "device_id": "DEV67890",
+  "risk_level": "Ignore",
+  "delivery_impact": {
+    "risk_level": "Ignore",
+    "leg": {
+      "current_leg": "LEG123",
+      "leg_type": "stop",
+      "leg_current_duration": 1440,
+      "leg_typical_duration": 12,
+      "pta": "2024-05-21T21:45:06Z"
+    },
+    "final_destination": {
+      "contracted_transit_time": 3600,
+      "shipment_transit_time": 3510.5,
+      "pta": "2024-05-21T21:45:06Z",
+      "delayed": false,
+      "delayed_by": 0
+    }
+  },
+  "temperature_impact": {
+    "risk_level": "Ignore",
+    "current_temperature": 23.5,
+    "mean_temperature_at_location_historical": 22.8,
+    "std_deviation_temperature_at_location_historical": 1.2,
+    "temp_ranges": {
+      "range_1": {
+        "pte": "normal temperature",
+        "excursion": false,
+        "time_out_of_range": 0,
+        "remaining_time_out_of_range": 240,
+        "remaining_shelf_life": "100%",
+        "num_excursions": 0,
+        "up_limit": 8,
+        "low_limit": 2
+      }
+    }
+  },
+  "external_impact": {
+    "risk_level": "Ignore",
+    "event_summary": [
+      "No significant external events"
+    ],
+    "impacted_location": [
+      "N/A"
+    ],
+    "event_type": [
+      "N/A"
+    ],
+    "event_start_time": [
+      "2024-10-10T10:00:00-03:00"
+    ],
+    "event_expiry": [
+      "2024-10-11T10:00:00-03:00"
+    ]
+  },
+  "risk_summary": "The shipment is currently on track with no significant risks identified."
+}
+  ```
+  ```json Response Example: Temperature-Impact-Watch
+{
+  "shipment_id": "SHIP12346",
+  "device_id": "DEV67891",
+  "risk_level": "Watch",
+  "delivery_impact": {
+    "risk_level": "Ignore",
+    "leg": {
+      "current_leg": "LEG124",
+      "leg_type": "segment",
+      "leg_current_duration": 2955,
+      "leg_typical_duration": 12,
+      "pta": "2024-05-22T14:30:00Z"
+    },
+    "final_destination": {
+      "contracted_transit_time": 4320,
+      "shipment_transit_time": 4245.75,
+      "pta": "2024-05-23T10:00:00Z",
+      "delayed": false,
+      "delayed_by": 0
+    }
+  },
+  "temperature_impact": {
+    "risk_level": "Watch",
+    "current_temperature": 7.5,
+    "mean_temperature_at_location_historical": 6.8,
+    "std_deviation_temperature_at_location_historical": 0.8,
+    "temp_ranges": {
+      "range_1": {
+        "pte": "warning: temp approaching low_limit",
+        "excursion": false,
+        "time_out_of_range": 0,
+        "remaining_time_out_of_range": 120,
+        "remaining_shelf_life": "95%",
+        "num_excursions": 0,
+        "up_limit": 8,
+        "low_limit": 2
+      }
+    }
+  },
+  "external_impact": {
+    "risk_level": "Ignore",
+    "event_summary": [
+      "Mild weather conditions"
+    ],
+    "impacted_location": [
+      "Chicago"
+    ],
+    "event_type": [
+      "Weather"
+    ],
+    "event_start_time": [
+      "2024-10-10T10:00:00-03:00"
+    ],
+    "event_expiry": [
+      "2024-05-22T12:00:00Z"
+    ]
+  },
+  "risk_summary": "The shipment is approaching temperature thresholds and may breach limits in the next few hours."
+}
+  ```
+  ```json Response Example: All-Impacts
+  {
+  "shipment_id": "SHIP12345",
+  "device_id": "DEV67890",
+  "risk_level": "Watch",
+  "delivery_impact": {
+    "risk_level": "Ignore",
+    "leg": {
+      "current_leg": "LEG123",
+      "leg_type": "stop",
+      "leg_current_duration": 1440,
+      "leg_typical_duration": 12,
+      "pta": "2024-05-21T21:45:06Z"
+    },
+    "final_destination": {
+      "contracted_transit_time": 3600,
+      "shipment_transit_time": 3510.5,
+      "pta": "2024-05-21T21:45:06Z",
+      "delayed": false,
+      "delayed_by": 0
+    }
+  },
+  "temperature_impact": {
+    "risk_level": "Ignore",
+    "current_temperature": 23.5,
+    "mean_temperature_at_location_historical": 22.8,
+    "std_deviation_temperature_at_location_historical": 1.2,
+    "temp_ranges": {
+      "range_1": {
+        "pte": "normal temperature",
+        "excursion": false,
+        "time_out_of_range": 0,
+        "remaining_time_out_of_range": 240,
+        "remaining_shelf_life": "100%",
+        "num_excursions": 0,
+        "up_limit": 8,
+        "low_limit": 2
+      }
+    }
+  },
+  "external_impact": {
+    "event_summary": [
+      "INMET issues alert starting on: 09/30/2024 10:32. Slight health risk. Temperature 5°C above average for a period of 02 to 03 days.",
+      "INMET issues alert starting on: 09/30/2024 09:33. Relative humidity varying between 30% and 20%. Low risk of forest fires and health issues."
+    ],
+    "impacted_location": [
+      "Sao Paulo",
+      "Technopark"
+    ],
+    "event_type": [
+      "weather:Heat wave",
+      "weather:Low Humidity"
+    ],
+    "event_start_time": [
+      "2024-10-10T10:00:00-03:00",
+      "2024-10-10T10:00:00-03:00"
+    ],
+    "event_expiry": [
+      "2024-10-02T23:59:00-03:00",
+      "2024-09-30T23:00:00-03:00"
+    ],
+    "risk_level": "Watch"
+  },
+  "risk_summary": "The shipment is currently on track, but there are weather alerts for heat wave and low humidity in the delivery area that may impact the shipment."
+}
+  ```
+  ```json Example 1
+  {
+  "status_code": "PXSC100",
+  "shipment_id": "SHIP12345",
+  "device_id": "DEV67890",
+  "risk_level": "Ignore",
+  "risk_summary": "The shipment is predicted to breach the temperature limit 2-10 C in the next 120 minutes, the shipment is dwelling at the current leg longer than usual but may still arrive at the destination on time.",
+  "delivery_impact": {
+    "risk_level": "Ignore",
+    "leg": {
+      "current_leg": "LEG123",
+      "leg_type": "stop",
+      "leg_current_duration": 1440,
+      "leg_typical_duration": 12,
+      "pta": "2024-05-21T21:45:06Z"
+    },
+    "final_destination": {
+      "contracted_delivery_time": "2023-01-05 08:20:59",
+      "shipment_transit_time": 3510.5,
+      "pta": "2024-05-21T21:45:06Z",
+      "delayed": false,
+      "delayed_by": 0
+    }
+  },
+  "temperature_impact": {
+    "risk_level": "Watch",
+    "current_temperature": 23.5,
+    "mean_temperature_at_location_historical": 22.8,
+    "std_deviation_temperature_at_location_historical": 1.2,
+    "temp_ranges": {
+      "property1": {
+        "pte": "normal temperature",
+        "excursion": false,
+        "time_out_of_range": 540,
+        "remaining_time_out_of_range": 60,
+        "remaining_shelf_life": "10%",
+        "num_excursions": 2,
+        "up_limit": 8,
+        "low_limit": 2
+      },
+      "property2": {
+        "pte": "normal temperature",
+        "excursion": false,
+        "time_out_of_range": 540,
+        "remaining_time_out_of_range": 60,
+        "remaining_shelf_life": "10%",
+        "num_excursions": 2,
+        "up_limit": 8,
+        "low_limit": 2
+      }
+    }
+  },
+  "external_impact": {
+    "risk_level": "Watch",
+    "event_summary": [
+      "INMET issues alert starting on: 09/30/2024 10:32. Slight health risk. Temperature 5°C above average for a period of 02 to 03 days.",
+      "INMET issues alert starting on: 09/30/2024 09:33. Relative humidity varying between 30% and 20%. Low risk of forest fires and health issues."
+    ],
+    "impacted_location": [
+      "Sao Paulo",
+      "Technopark"
+    ],
+    "event_type": [
+      "weather:Heat wave",
+      "weather:Low Humidity"
+    ],
+    "event_start_time": [
+      "2024-10-10T10:00:00-03:00",
+      "2024-10-10T10:00:00-03:00"
+    ],
+    "event_expiry": [
+      "2024-10-02T23:59:00-03:00",
+      "2024-09-30T23:00:00-03:00"
+    ]
+  }
+}
+  ```
+</ResponseExample>
