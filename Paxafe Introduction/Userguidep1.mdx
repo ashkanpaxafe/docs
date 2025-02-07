@@ -1,0 +1,697 @@
+---
+title: "Knowledge base part 1"
+---
+
+# Product Overview
+
+Contxt is a risk management platform powered by artificial intelligence (AI). It empowers supply chain leaders to proactively predict, prevent, and resolve risks in their distribution networks. Contxt evaluates shipping lanes to proactively identify and address vulnerabilities. In this way, organizations can better protect their shipments, reduce costs associated with delays or damage, and maintain higher levels of quality assurance.
+
+In **Contxt**, a lane represents a specific transportation route used to ship products from an origin to a destination. Each lane is defined by a combination of the elements below. During initial setup, customers provide this information (and other system requirements) through user onboarding process.
+
+* **Origin**
+
+
+  The starting point of a shipment, where products are first picked up or loaded.
+
+* **Destination**
+
+
+  The endpoint where products are delivered, completing the journey.
+
+* **Mode of Transportation**
+
+
+  The method(s) used to transport products, such as Air, Ocean, or Road. A single lane can include multiple modes.
+
+* **Product**
+
+
+  The goods moving along a lane. Multiple product types can be associated with a single lane.
+
+* **Waypoint**
+
+
+  Any stop or location along a route where goods are picked up, transferred, or delivered (e.g., distribution centers, transit hubs, or final delivery locations).
+
+* **Segment**
+
+
+  The portion of a route between two consecutive waypoints, representing the actual path taken by shipments.
+
+* **Route**
+
+
+  A complete path from the Origin to the Destination. This may include multiple waypoints, segments, and transportation modes. A lane can have more than one valid route.
+
+## Installation and Setup
+
+This section walks you through activating your Contxt account, resetting your password, and managing your account settings. If you need to set up or manage multiple user accounts at your company, see the **Companies and User Management** section for more information.
+
+### Account Activation
+
+1. **Check Your Email**
+
+
+   After your company’s Contxt administrator adds you as a user, you will receive an automated email from Contxt. If you don’t see it in your inbox, check your spam or junk folder.
+
+2. **Whitelist the Sender**
+
+
+   To ensure you receive all account-related messages and alerts, add 
+
+   [support@paxafe.com](mailto:support@paxafe.com)
+
+    to your list of trusted senders (also known as your email whitelist).
+
+3. **Activate Your Account**
+
+
+   Open the email and click the 
+
+   **Activate**
+
+    button. You will be directed to a secure page to set your password.
+
+Once activated, you can log in and begin exploring Contxt. If you ever forget your password, you can reset it at any time—details on that process are covered in the next section.
+
+![image-20250117-043212.png](blob:https://paxafe.atlassian.net/c19cd140-5ce7-442f-bda0-3901d18d2f3d#media-blob-url=true\&id=dc91d516-f0be-48d8-9a81-e0c291c7b57e\&collection=contentId-1309147137\&contextId=1309147137\&mimeType=image%2Fpng\&name=image-20250117-043212.png\&size=26233\&width=584\&height=530\&alt=image-20250117-043212.png)![](/a1.png)
+
+![](/a2.png)
+
+### Password Reset
+
+Once the password is reset, log into Contxt.
+
+![](/a3.png)
+
+Navigate to the Contxt login page and click the **Forgot your password?** link.
+
+![](/a4.png)
+
+### Password Reset
+
+Enter the email address that was used to sign up for Contxt.
+
+Then, click **Submit**.
+
+![](/a5.png)
+
+A password reset email will be sent to the individual user from Contxt within a few minutes.
+
+![](/a6.png)
+
+Click the **Reset Password** button and follow the instructions.
+
+![](/a7.png)
+
+![](/a8.png)
+
+### Account Management
+
+In the top right corner of the screen, click the **Your Initials** icon to view/edit profile settings.
+
+You can view Contact Support information, review Contxt Terms of Use and Privacy Notice, and log out.
+
+Click **My Profile** to open the My Profile page.
+
+![](/a9.png)
+
+The **My Profile** page is where users update personal information, modify time zone settings (Local or Greenwich Mean Time), and change their password.
+
+![](/a10.png)
+
+## Lane Risk Assessment
+
+The Lane Risk Assessment page is the central hub for monitoring and managing the performance of your shipping lanes. By default, you are directed to this page when you log into *Contxt*, but you can also access it at any time by clicking the Lane Risk Assessment icon on the left navigation menu. Below is an overview of each component on this page.
+
+### Lane List Header (Filters and Search)
+
+At the top of the Lane Risk Assessment page, you’ll find a set of filters and a search bar. These tools allow you to locate and view only the lanes relevant to your needs.
+
+#### **Origin & Destination**
+
+Both are *multi-select* filters, so you can choose multiple origins and destinations at once.
+
+When you select a destination, the origin filter automatically narrows to origins that connect to your chosen destination (and vice versa).
+
+#### **Group & Company**
+
+Use these filters to refine your results further based on specific business groups or companies.
+
+Default selections follow your organization’s *Contxt* setup.
+
+#### **Product**
+
+A *single-select* filter that applies to all shipments in the lane.
+
+By default, “Select Product” is shown, meaning no product is currently selected.
+
+Only lanes with shipments for the chosen product are displayed.
+
+#### **Search Bar**
+
+You can search across all displayed table columns and available lane metrics (e.g., origin, destination).
+
+Terms like “air” or “ocean” can be used, but “multimode” is not searchable.
+
+Use the search bar to quickly find a lane by name or by any key data associated with it.
+
+#### List of Lanes
+
+Below the header, you’ll see a table listing all lanes that match your selected filters and search criteria. Each row provides details and metrics:
+
+**Origin:** Displays the starting location for the lane.
+
+**Destination:** Displays the ending location for the lane.
+
+**Performance:** Visualized using dots to show the most recent performance level:
+
+(1 dot) = *Needs Attention*
+
+(2 dots) = *Average*
+
+(3 dots) = *Optimal*
+
+**External Impact:**
+
+Shows the impact of external events (e.g., weather, geopolitical).
+
+Labeled as *High*, *Medium*, or *Low* based on the most recent data refresh.
+
+#### Sorting Logic: By default, lanes are sorted using:
+
+**Primary Sorting (Ascending)** on Lane Performance
+
+*Needs Attention* → *Average* → *Optimal*
+
+**Secondary Sorting (Descending)** on External Impact
+
+*High* → *Medium* → *Low*
+
+#### Pagination:
+
+**Items per Page**: Choose how many lanes to display at once (10, 20, 30, 40, or 50). The default is 10 lanes per page.
+
+**Page Navigation**: Use the page numbers at the bottom to switch between pages.
+
+### Lane Metrics:
+
+When you select a lane, a metrics panel on the right side of the page displays key summary data for that lane. By default, you’ll see a condensed view.
+
+**Transport Mode:** Lists each mode used for that lane (e.g., *Air*, *Marine*, *Road*). If multiple modes are detected, a “*Multimode*” tag appears.
+
+**Routes:** Shows how many routes (verified and unverified) make up this lane.
+
+**Shipment Count:** The total number of shipments processed in the most recent data refresh.
+
+**Delayed Shipment Count:** How many of those shipments are delayed.
+
+**Shipment Count with Excursions:** Total shipments that experienced a temperature excursion or other critical event.
+
+#### Expanded View (Show More): When you click **Show More**, the panel becomes scrollable and includes:
+
+**Expected Transit Time:** The agreed-upon lead time for transporting shipments in this lane.
+
+**Average Transit Time:**
+
+The actual average transit time (e.g., “2d 15h \[+3h]”) with color-coded highlights.
+
+If the average transit time exceeds the contracted lead time, the difference is shown in red; otherwise, it appears in gray.
+
+**Total CO2 Emissions:**
+
+CO₂ output for all shipments in the lane during the most recent data period.
+
+Automatically adjusts units:
+
+\<1000 kg → display in metric tons (e.g., 0.314 metric tons).
+
+≥1000 kg and \<1000 metric tons → display in metric tons (e.g., 78.731 metric tons).
+
+≥1000 metric tons → display in kilotons (e.g., 2.375 kt).
+
+**Lane ID:** LaneID will be displayed if provided by the customer.
+
+To collapse this area again, click **Show Less**. If you navigate away from the page and return, *Contxt* remembers whether you left the details expanded or collapsed.
+
+#### Lane Details Button:
+
+Next to the lane’s name, you’ll see a **Lane Details** button. Clicking this opens a more comprehensive view focused on performance trends, device and packaging details, external events, and much more.
+
+### Athena Insights
+
+In the lower-right corner of the metrics panel, you will see a section labeled **“powered by ATHENA”**. This area provides AI-driven insights about each lane’s current status. These insights are grouped into tabs—some of which may be disabled if they are not available in your current *Contxt* release.
+
+**Delivery Performance:** Focuses on on-time delivery metrics: delayed shipments, average delay times, and trends.
+
+**Temperature Performance:** Highlights temperature excursions and related impacts.
+
+**Route Performance**: shows details for each route
+
+**Device Performance** *:* report on tracking device connectivity and battery life.
+
+**Package Performance**: include packaging compliance and recommendations for improvements.
+
+**External Events** *:* outline significant weather or geopolitical disruptions affecting shipments.
+
+**Note**: If you see a tab in a disabled state, it will be labeled but not clickable.
+
+## Lane/Route/Shipment Tab Heading
+
+When user click on a lane from the Lane Risk Assessment page, user will arrive at a dedicated performance view. The header at the top of this page provides essential information about the selected lane (or route, or shipment) and includes several interactive elements.
+
+### Breadcrumbs
+
+**Navigation Path**
+Near the top-left corner, you’ll see breadcrumbs showing your current page location (e.g., *Lane Risk Assessment > Lane: Frankfurt to Louisville*).
+
+**Lane Name**
+If you select a particular lane, the lane name (e.g., “Lane: Frankfurt to Louisville”) is the last part of the breadcrumb
+
+**Note:** If you drill down into a route or segment, the breadcrumb remains the same. You still see “Lane Name” but know that you are viewing route details below that lane.
+
+### Back Button
+
+**Back to Lane List:** A button labeled **Back** (with a left arrow icon) takes you to the previous lane list, preserving any filters you had in place (such as date range or product selection).
+
+### Lane Name & Athena Summary
+
+**Lane Name:** Shows the origin-to-destination label (e.g., “Lane: Frankfurt to Louisville”).
+
+**Athena Summary:** A button next to the lane name opens an AI-powered summary pop-up (*“powered by ATHENA”*). If you are currently viewing a route or segment within that lane, *Contxt* pre selects the corresponding route in the Athena pop up. This summary provides deeper insights and recommendations about the lane’s recent performance.
+
+### Last Data Refresh
+
+**Timestamp:** Shows the most recent date and time at which data was updated (e.g., “Last data refresh: 2024-08-06 at 12:45 PM UTC”). All metrics and charts within this view reflect that update cycle.
+
+### Transportation Mode & Lane SOP Status
+
+**Transportation Mode:** Displays tags for the mode(s) used (e.g., *Road*, *Air*, *Marine*, or *Multimode*).
+
+**Lane SOP Status:** *Verified (solid blue check)*: Indicates a Lane validation document is available. Hover over the checkmark to see a tooltip: “Lane validation document available”. *Not Provided (disabled check)*: No lane validation document on file. Hover for tooltip: “Lane validation document not available.”
+
+### Lane Performance & External Events Impact
+
+**Lane Performance:** Displayed as *Needs Attention*, *Average*, or *Optimal*, respectively.
+
+**External Impact:** Labeled as *High* (red), *Medium* (yellow), or *Low* (green), reflecting the severity level of external disruptions affecting the lane.
+
+### Download CSV
+
+**Download Raw Data:** A small download icon allows you to export all ping-level data for this lane filtered by date range and product to a CSV file.
+
+**Columns Included**: ShipmentID, LaneID, RouteID, LegID, ProductID, DeviceID, Latitude, Longitude, Temperature, BatteryPercentage, PingRate, Temperature Excursion, Status, BestDevice.
+
+### Filters (Date Range & Product):
+
+All subsequent charts and metrics on the page update instantly according to your filter selections.
+
+**Date Range:** Predefined Ranges: *Last Data Refresh*, *Last Month*, *Last 2 Months*, *Last 3 Months*, *Last 6 Months*, *This Year*, *Last Year*. Custom Range: Choose a start and end date using a dual-month calendar picker. Disabled dates (e.g., future or unavailable) are greyed out. Click **Apply** to finalize or **Cancel** to discard changes.
+
+**Product:** A single-select dropdown that filters the displayed data by product. Default is “Select Product,” which includes *all* shipments. Temperature-related metrics and charts require a specific product selection. If no product is selected, *Contxt* will remind you that temperature data is unavailable.
+
+### Navigation Tabs:
+
+**Lane Overview:** Displays top-level performance stats and summary insights for the selected lane.
+
+**Routes :** Shows the list of routes within the lane. The number in parentheses indicates how many routes are found given your chosen date range and product. If you click on a route, you can further see segment or waypoint details.
+
+**Shipments:** Displays individual shipments (and their statuses) for the current lane or route. The number in parentheses reflects how many shipments meet the date and product filters.
+
+### Notification & Profile Icons:
+
+**Alarm Icon:** Displays notifications generated by the platform (e.g., alerts about delayed shipments, device battery issues).
+
+**Avatar Icon:** Opens your user menu with the following options:
+
+*My Profile*
+
+*Contact Support*
+
+*Terms of Use*
+
+*Privacy Notice*
+
+*Log Out*
+
+## Performance Factor Tabs
+
+Below the main header, you’ll find a row of “tabs” presenting key performance factors for the currently viewed lane, route, or segment.
+
+### **Lane Performance**
+
+**Subtitle**: Shows the level of performance (*Needs Attention*, *Average*, or *Optimal*).
+
+**Needs Attention** if any shipment is delayed or has a temperature excursion in the current date range and product filter.
+
+**Average** if at least one shipment has readings within 10% of the upper/lower temperature threshold.
+
+**Optimal** if no shipments trigger “Needs Attention” or “Average” conditions. A red warning triangle appears if the level *Needs Attention*.
+
+### **External Impact**
+
+**Subtitle**: Shows *High*, *Medium*, *Low*, or *No Events*. *High* if any serious external disruptions are detected (e.g., severe weather). *Medium* if no high-impact events are found but some moderate events exist. *Low* if only low-impact events exist. *No Events* if no disruptions are reported. A red warning triangle appears if the impact is *High*.
+
+### **Device Performance**
+
+**Subtitle**: Shows *Optimal*, *Average*, or *Needs Attention*. *Needs Attention* if more than 25% deviation in ping rate, or if starting/ending battery levels fall below-configured thresholds. *Average* if ping rates deviate by >10% but \<25%. *Optimal* if no shipments meet the criteria for “Average” or “Needs Attention.” A red warning triangle appears if the level is *Needs Attention*.
+
+### **CO2 Emissions**
+
+**Subtitle**: Displays the total CO₂ emissions in metric tons or kilotons (e.g., *0.153 metric tons*, *7.152 kt*). No warning triangle. This is purely informational—color-coded to highlight the aggregated emissions.
+
+**Packaging Performance (Coming Soon):** Disabled/greyed out.
+
+### User Highlights:
+
+Lane Overview is your navigational anchor for any lane, route, or shipment details you’re viewing. By simply looking at the top of the page, you can see the lane name, transportation mode, last data refresh. all critical for making quick decisions. The built-in filters (date range and product) instantly reconfigure every metric on the page, so you can slice the data you need without losing your place. You also get one click access to Athena’s AI-driven insights, robust performance tabs (Lane Performance, External Impact, Device Performance, and CO₂ Emissions), and easy navigation to Routes or Shipments within the lane.
+
+## Routes tab - Segment/Waypoint Selector:
+
+If you open a **Routes** tab and select a route, you may see a visual flow of its segments or waypoints. This interactive timeline lets you examine each hop from origin to destination.
+
+### **Back to Routes List:**
+
+A button at the top-left corner returns you to the route overview for the current lane. Your date range and product filters remain intact.
+
+### **Route Title & Mode:**
+
+The route name (e.g., “Route: Frankfurt-Port of Rotterdam-Port of Savannah-Port of Elizabeth-Louisville Ky”) is displayed. You’ll also see an icon or tag for the transport mode (Road, Air, Marine, or Multimode).
+
+### **Route Verification Status:**
+
+A small icon (solid check, dotted circle, or X) indicates whether the route is *Verified*, *Pending Verification*, or *Unverified*. Hover over the icon to see a tooltip explaining its status.
+
+**Segment/Waypont Cards:**
+
+Each segment or waypoint is displayed as a “card” showing basic metrics (e.g., average transit time, excursion count for segments, average dwell time for waypoints). Use the left/right arrow icons to scroll through the chain of segments from origin to destination.
+
+**Selected Segment:** The currently highlighted card is your “selected segment.” The lower section of the screen updates to show that segment’s performance details.
+
+**Compare Segment/Waypoint:**
+
+A checkbox or toggle labeled *Compare* allows you to see how this segment/waypoint’s metrics stack up against others. You can select multiple segments/waypoints (up to 5) across different lanes/routes for side-by-side analysis.
+
+## On-Time Delivery Performance Metrics
+
+This component focuses on how well your shipments are meeting their delivery performance.
+
+### Metrics Displayed:
+
+**Shipments with Location Data:** The number of shipments (based on date range and product filters) that have valid location data and related updates.
+
+Clicking the **Open in new tab** icon takes you to the Shipments tab, pre-filtered for only those shipments.
+
+**Expected Transit Time:** The scheduled or contracted duration for the lane/route. A tooltip explains: “The expected duration of shipments.”
+
+**Average Transit Time:** The actual average duration shipments took during the selected timeframe. If multiple expected transit times exist, you’ll see “Select a Route” to view exact data. A small badge indicates how much this average differs from the expected time (e.g., “+2h” in red if slower, or displayed in gray if faster or on schedule).
+
+**Delayed Shipment Count:** Shows how many shipments missed their expected transit time.
+
+**Color Coding:**
+
+*Red* indicates an unfavorable increase (e.g., more delays or a longer average transit time).
+
+*Gray* indicates a neutral or improved metric.
+
+**Hover Tooltips:** Provide details on the current value, a comparison to a previous period, and any relevant notes about the timeframe. the comparison tooltip can provide details as shown for current vs previous time frame.
+
+### Route & Segment metrics calculation Differences:
+
+**Route-Level Calculations:** Metrics only reflect shipments traveling on that specific route.
+
+**Segment/Waypoint-Level Calculations:** No specific *Expected Transit Time* for segments/waypoints, so those fields show “N/A” or a prompt to refer to the route data. Delays are shown specifically for shipments that had an issue in that segment/waypoint.
+
+## User highlights:
+
+By navigating through these components, you can gain a comprehensive view of how each lane, route, or individual segment is performing:
+
+**Identify Your Focus**: Filter by date range, product, or navigate directly to the lane/route of interest.
+
+**Review Headline Indicators**: Check performance factor tabs for any *Needs Attention* or *High* external impact warnings.
+
+**Drill Down by Segments/Waypoints**: Understand where delays or excursions occur within your route.
+
+**Check On-Time Delivery Metrics**: Determine how many shipments are delayed, how actual transit times compare to expected values, and whether device performance issues or external events might be contributing.
+
+**Export Detailed Data**: Use the CSV download feature for deeper offline analysis or sharing with stakeholders.
+
+## Shipments Transit Time Graph
+
+The Shipments Transit Time graph provides a visual overview of how long shipments are taking to travel from their origin to destination and whether they meet, exceed, or fall below the *Expected Transit Time*. By hovering or clicking on data points, you can discover detailed information about each shipment.
+
+
+
+### Graph Overview: A combined line-and-scatter chart showing:
+
+**Trend** (solid line): Illustrates how transit times change over the selected period.
+
+**Expected** (dashed line): The contracted lead time (if only one is defined for the lane or route).
+
+**Delayed Shipments** (red dots): Shipments that took longer than expected.
+
+**On-Time Shipments** (green dots): Shipments that met or beat the expected time.
+
+**Average Transit Time** (horizontal dashed line): Reflects the average across all shipments within your *Date Range* and *Product* filters.
+
+**X-Axis (Shipment Start Date)**
+
+Displays the shipment’s start date (UTC).
+
+**Y-Axis (Transit Time):** Shows how long the shipment took from start to finish.
+
+Units switch automatically based on overall duration
+
+**Hours** if transit times are under one week.
+
+**Days** if transit times are between one week and one year.
+
+**Years** if transit times exceed one year.
+
+### Filters & Display Options
+
+A small **Filter** button (funnel icon) in the top-right corner of the graph allows you to toggle each of the five data sets on/off:
+
+**Average Transit Time**
+
+**On-Time Shipments**
+
+**Delayed Shipments**
+
+**Transit Time Trend**
+
+**Expected Transit Time**
+
+By checking or unchecking these boxes, you can simplify the view to focus on only the data that matters most to you. **Note**: If you have multiple Expected Transit Times for a lane, you’ll see a note telling you to *“Select a Route”* rather than a single line for the expected time.
+
+### Interacting with the Graph:
+
+When you hover over any data point, a tooltip appears showing the Shipment ID and its Transit Time.
+
+For the *trend lines*, you’ll see average or daily transit times based on your selected grouping (e.g., daily, weekly). Click to View Shipment Details: Clicking on a shipment data point (red or green dot) opens a Detailed Shipment Information panel on the same page if you’re in Expanded Mode (see below).
+
+In the details panel, you can see:
+
+**Shipment ID**
+
+**Status** (e.g., *Delayed* or *On-Time*)
+
+**Start Date**
+
+**Transit Time**
+
+**Expected Transit Time** (if applicable)
+
+**Delayed By** (if the shipment is delayed, shown in red)
+
+A **Review Shipment** button that navigates you to the *Shipments* tab (pre-filtered for this specific shipment).
+
+**Expand Button** (two-arrow icon). Enlarges the chart to occupy more screen space, making it easier to analyze complex data.
+
+### Special Scenarios:
+
+**No Data Found:** If no shipments match your filters (e.g., date range, product), the chart area shows *“No data found. Try changing search criteria.”* The chart lines and axes are hidden.
+
+**Multiple Expected Transit Times:** If the lane has more than one contracted lead time (e.g., multiple routes in the lane have different expected durations), *Contxt* cannot display a single “Expected Transit Time” line. You’ll see a message: *“Please refer to the Routes tab”*.
+
+**Data Limit Exceeded:** If your selected range returns too many data points for the chart to handle, an error message appears: *“Data limit exceeded. Please select a smaller Date Range.”*
+
+**Single Shipment**If only one shipment meets your filters, the average and trend lines adapt accordingly. You’ll typically see a single data point with minimal lines.
+
+### Route vs. Segment/Waypoint Views:
+
+**Route-Level:** The graph is filtered to include only shipments on the selected route. *Expected Transit Time* remains visible if that route has exactly one contracted lead time.
+
+**Segment/Waypoint-Level:** Title changes to “Segment Transit Time” or “Waypoint Dwell Time”.
+
+There is no expected time for a segment or waypoint, so the *Expected Transit Time*line or filter option is hidden.
+
+If comparing multiple segments, the chart becomes a Segment Transit Time Trend or Waypoint Dwell Time Trend, plotting separate lines for each segment/waypoint.
+
+The hover tooltip shows each segment’s or waypoint’s time on that date.
+
+### Comparison Mode (Segments/Waypoints Only)
+
+When using the **Compare Segment/Waypoint** feature (as covered in the *Segment/Waypoint Selector* section), this chart transforms into a multi-line comparison:
+
+Each selected segment or waypoint is assigned a different colored line.
+
+Hovering over the chart displays all lines’ data at that particular date.
+
+The chart label changes to **“Segment Transit Time Trend”** or **“Waypoint Dwell Time Trend.”**
+
+Clicking data points is disabled in comparison mode since multiple segments are displayed.
+
+### Practical Tips
+
+**Check Red vs. Green Dots:** *Red dots* indicate delayed shipments. review them first if you’re troubleshooting time-sensitive products. *Green dots* reflect on-time shipments, confirming that everything is running smoothly.
+
+**Use the Filter Button:** If you’re only interested in delayed shipments, uncheck other datasets (e.g., “On-Time Shipments,” “Expected Transit Time,” etc.) to declutter the chart.
+
+**Expand Mode for Deep Analysis:** If the chart is crowded, click **Expand** to see a larger view. This is especially helpful when comparing multiple lines or a longer date range.
+
+**Navigate to Shipments:** For deeper investigation (e.g., device battery levels or temperature excursions), click on a point in normal (non-expanded) mode, then select **Review Shipment** in the details panel.
+
+## Temperature Performance Metrics
+
+Use the **Temperature Performance** component to quickly assess how your shipments are adhering to the required temperature range. These metrics also help you pinpoint where excursions might be occurring.
+
+### Metrics & Descriptions:
+
+**Shipments with Temp. Data**
+
+Total shipments (within your chosen *Date Range* and *Product*) that have at least one temperature-reading device.
+
+A small “Open in new tab” icon may appear, allowing you to navigate directly to a filtered view of those shipments.
+
+**Shipping Temperature Ranges**
+
+Displays the designated temperature range (e.g., *2°C – 8°C*) for the *selected product*.
+
+If no product is selected, you’ll see a “Select a product” placeholder (since multiple products may have different ranges).
+
+**Avg. Time out of Range per Shipment**
+
+Shows how long (on average) shipments spent outside the specified temperature range.
+
+If the average time out of range increases from one period to another, it appears in red; if it stays the same or decreases, it’s shown in gray or green accordingly.
+
+**Shipment Count with Excursions**
+
+Total number of shipments that experienced at least one temperature excursion.
+
+Clicking the arrow icon navigates you to a filtered shipments list showing only those with excursions.
+
+**Avg. Excursion Temp. Above Range**
+
+The average temperature recorded for pings exceeding the product’s upper limit.
+
+Red if it has increased compared to the previous period; gray if unchanged or improved.
+
+**Avg. Excursion Temp. Below Range**
+
+The average temperature for pings falling below the product’s lower limit.
+
+Red if it has *decreased* from the previous period (because a bigger negative number means a more severe drop), gray otherwise.
+
+### When No Product is Selected:
+
+**Shipping Temperature Ranges**, **Avg. Excursion Temp. Above Range**, and **Avg. Excursion Temp. Below Range** are not displayed, as the system cannot determine the applicable temperature thresholds for multiple products.
+
+### Comparison Badges & Tooltips
+
+**Comparison Badge**: Next to each metric, a small badge (e.g., *+1*, *-3*) indicates how that metric changed relative to a previous time period. The badge’s color reflects whether it’s an unfavorable increase (red), a favorable decrease (green), or neutral (gray).
+
+**Hover Tooltips**: Provide detailed info on which date ranges are being compared.
+
+### Route & Segment/Waypoint-Level Changes
+
+At **Route level**, these metrics are calculated only for shipments passing through that route.
+
+At **Segment/Waypoint level**, results focus on shipments specifically traveling through that segment/waypoint.
+
+## Shipments Temperature Profile Graph
+
+The **Shipments Temperature Profile** graph visualizes each shipment’s recorded temperature over time, enabling you to spot excursions at a glance. By default, this chart uses a *boxplot* approach to show median, quartiles, whiskers, and excursion points.
+
+### Chart Elements:
+
+**Lower Limit & Upper Limit:** Two horizontal lines (blue for lower, red for upper) indicating the acceptable temperature range for the *selected product*.
+
+### Detailed Shipment Information Panel:
+
+When you click on a shipment in the standard view (non-expanded):
+
+**Shipment ID & Status:** Identifies the shipment and whether it had excursions.
+
+**Start Date:** The date and time the shipment began (UTC).
+
+**Number of Devices:** How many temperature-tracking devices are attached to this shipment.
+
+**Recorded Temp. Range:** The min and max temperatures recorded across the entire journey.
+
+**Number of Excursions:** Total count of out-of-range events.
+
+**Upper/Lower Limit:** Your product’s defined temperature boundary.
+
+**Time Above/Below Limit:** How long the shipment spent above/below the thresholds, with a warning icon if >0.
+
+**Average Excursion Temp. Above/Below Range:** The mean temperature of all pings above/below the threshold, including a warning icon if any excursion occurred.
+
+**Review Shipment**: Takes you to a detailed shipment screen (the *Shipments* tab) pre-filtered for this ID.
+
+### Route & Segment Views:
+
+At **Route level**, the chart and boxplots reflect shipments for that route.
+
+At **Segment/Waypoint level**, it only includes the temperature data for the portion of travel through that segment/waypoint.
+
+### Comparison Mode (Segments/Waypoints)
+
+When comparing multiple segments or waypoints:
+
+The chart label becomes **“Avg. Temperature Profile”** and each line represents the average temperature for a particular segment/waypoint. Hovering on the graph displays the temperature for each line at a specific date.
+
+## Segment/Waypoint Comparison Table:
+
+This table allows you to compare performance metrics—like delays or excursions—across different segments or waypoints, even if they belong to different lanes or routes.
+
+### Selecting Segments/Waypoints
+
+**Select Checkbox:** Each row represents a segment/waypoint from a particular lane or route.
+
+The first row (your current segment/waypoint) is always preselected; you can add up to four more rows for comparison.
+
+### Table Columns
+
+**Lane Name:** Displays the lane label along with a color-coded icon matching the route’s color scheme in the UI.
+
+**Route Name:** Shows the route path. Helpful for distinguishing multiple routes within the same lane.
+
+**Shipment Count:** Total shipments passing through this segment/waypoint within your selected date range and product filter. A small badge to the right compares it to the previous time period (always displayed in gray).
+
+**Number of Delayed Shipments:** How many shipments encountered delivery delays in this segment.
+
+Comparison badge: **red** if increased, **green** if decreased, **gray** if unchanged.
+
+**Avg. Delay:** The average time shipments are late (minutes/hours/days) beyond the expected transit.
+
+Comparison badge: **red** if increased, **green** if decreased, **gray** if unchanged.
+
+**# Excursion Shipments:** Number of shipments that went out of temperature range in this segment.
+
+Comparison badge: **red** if increased, **green** if decreased, **gray** if unchanged.
+
+**Avg. Time Out of Range:** The average duration shipments spent outside the temperature range. Comparison badge: **red** if increased, **green** if decreased, **gray** if unchanged.
+
+### Sorting & Organization:
+
+**Default Sorting:** Rows are grouped by Lane Name in ascending order, then by Route Name (ASC).
+
+**Checkbox Selections:** The currently viewed segment/waypoint is automatically selected. Additional rows can be checked to enable the multi-line comparison chart.
+
+### Compare Mode Integration:
+
+If you select multiple segments or waypoints, the relevant performance charts (e.g., *Segment Transit Time Trend* or *Avg. Temperature Profile*) update to show lines for each selected row.
+
+This table provides numerical detail, while the chart offers a visual timeline.
