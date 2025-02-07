@@ -1,0 +1,648 @@
+---
+title: "Knowledge base part 2"
+description: "Description of your new file."
+---
+
+## Lane/Route/Shipment Tab Heading (External Impact View)
+
+Following the screenshot ,displays key information about your current lane, route, or shipment. However, when you are viewing **External impact** , a few things change:
+
+**Date Range Filter (Disabled):** You will see the date range defaulting to *Last Data Refresh*, but it is *not* editable while in External Events mode.
+
+**Product Filter (Disabled):** The product dropdown shows “Select Product,” but it is *not* clickable. External events are not product-specific, so no product selection is needed here.
+
+**No External Events:** If the system finds no relevant external events for your current lane (or route/segment), the **External Impact** field in the header displays *“No Events.”*
+
+**Navigation Note**: If you switch back to *Lane Performance* or *Device Performance*, your previous date range and product filters will reappear exactly as you left them.
+
+## Segment/Waypoint Selector (External Events View)
+
+When exploring external events at the **Route** level, you still see the interactive timeline of segments and waypoints. **However**, the display and functionality differ slightly from other performance views:
+
+**Metric Display:** Each segment or waypoint card now shows only *External Event Impact* (e.g., *High*, *Medium*, *Low*, or *No Events*). Even the Origin and Destination “cards” can show an external impact level if one exists.
+
+**Selecting a Segment/Waypoint:** Clicking on a segment/waypoint card filters the map and event table below, so you only see external events relevant to that segment or waypoint.
+
+**Comparison Mode:** *Compare to Other Routes* is disabled in External Events mode. You won’t see a checkbox to compare multiple segments/waypoints.
+
+**No Data Scenario:** If a certain segment/waypoint has no external events associated with it, the card displays *“No Events”.* This does *not* prevent other segments in the same route from having events.
+
+## Performance Factor Tab Bar (External Events)
+
+The **Performance Tabs** (Lane Performance, External Impact, Device Performance, etc.) remain the same as mentioned before, with **External Impact** highlighted when in this view. If no data is available for external impact, the tab will still appear, but you’ll see *No Events* and a grayed-out indicator on the tab itself.
+
+## External Impact Map and Table:
+
+This combined component offers both an **Interactive Map** and an **External Events Table** to help you visualize and filter external disruptions:
+
+### Filters (Route, Waypoints/Segments, Event Type, Event Severity)
+
+**Route Filter:** Multi-select dropdown for one or more routes (if you have multiple routes under the same lane). When you arrive at External Events from a specific route, that route is preselected.
+
+**Waypoints/Segments Filter:** Multi-select list. Selecting a waypoint or segment focuses the map and event list on disruptions occurring there.
+
+**Event Type:** Multi-select, covering categories like *Weather* and *Geopolitical*.
+
+**Event Severity:** Multi-select, covering *High*, *Medium*, and *Low*.
+
+**Note**: The usual **Date Range** and **Product** filters are *disabled* in External Events mode. All external disruptions are linked to real-time or recent data, not a specific product or date range you control.
+
+### Map View & Interactions
+
+**Icons & Colors:**
+
+*Red* icons for *High* severity
+
+*Yellow* icons for *Medium* severity
+
+*Green* icons for *Low* severity
+
+**Zoom & Pan:** You can zoom in and out or click on icons for more details.
+
+**Map & Table Sync:** Clicking on a cluster or icon on the map highlights the corresponding row(s) in the *External Events Table* below.
+
+### External Events Table:
+
+Below the map, you’ll see a summary table grouped by **Event Type** (Weather and Geopolitical) with counts for each severity tier (High, Medium, Low). Clicking any cell (e.g., *Weather High*) applies an immediate filter to show only weather events of high severity in the feed.
+
+**Columns**:
+
+*Event Type* (Weather, Geopolitical)
+
+*High* (number of high-severity events)
+
+*Medium* (number of medium-severity events)
+
+*Low* (number of low-severity events)
+
+**Filtering on Click:** For instance, selecting “High” in the *Weather* row updates your map and feed to show only high-severity weather events.
+
+## External Events Feed:
+
+The **External Events Feed** displays individual event entries—such as storms, political unrest, or other disruptions—in descending order of severity.
+
+### Event Row: Each row lists:
+
+**Severity:** *High* (red), *Medium* (yellow), or *Low* (green).
+
+**Event Type:** An icon and label (e.g., a globe for *Geopolitical*, a cloud for *Weather*).
+
+**Start Date & Time:** The moment the event begins, shown in UTC.
+
+**Description:** A brief summary of the event’s impact (e.g., “Maria is the strongest ever storm to make landfall on Mexico’s west coast”).
+
+**Disruptions** (for geopolitical events): Specific disruptions like *airport closures*, *flight delays*, or *factory shutdowns*.
+
+**Details Button:** Opens a more comprehensive view or modal with extended event data (e.g., duration, affected lanes).
+
+### Sorting & Pagination:
+
+**Sorting by Severity:** High-severity events appear first, followed by medium, then low. Secondary sort is start date/time (newest first).
+
+**Pagination Controls:** Located at the bottom of the feed. You can jump between pages (1, 2, 3, etc.) and choose how many events to display per page (4, 8, 12, 16).
+
+### No External Events:
+
+If no events match your selected route, segments, or filters: A message reads *“No External Events Found.”* Pagination and items-per-page controls are disabled.
+
+## Event Heading
+
+When you open the details for a specific external event (e.g., by clicking **Details** in the External Events Feed), a **modal** or **page** appears with a heading at the top.
+
+### **Event Type & Name:**
+
+Example: **Weather Event Details: Storm.** Clearly identifies the nature of the event (Weather, Geopolitical, etc.) and a short descriptor (e.g., “Storm,” “Heat Wave,” or “Hurricane”).
+
+**Event Severity:** Shows whether the event impact level is *High*, *Medium*, or *Low* (e.g., *High* in red).
+
+**Last Data Refresh:** Displays the timestamp when the event information was last updated, in UTC format. Example: *“Last data refresh: 2024-08-05 at 12:45 PM UTC.”*
+
+**Close Button:** An **X** icon in the top-right corner allows users to close the modal (or page) and return to the previous screen.
+
+### Event Description and Overview:
+
+Below the heading, you’ll find detailed information about the event’s background, timeframe, and origin of data.
+
+### Event Description:
+
+**Event Headline:** A bold, prominent title or statement from the data source (e.g., “Maria is the strongest ever storm to make landfall on Mexico’s west coast”).
+
+**Event Summary:** A short paragraph describing the event’s context and key points. If the text is lengthy, users will see a **Read More** link that, when clicked, expands to show the full description. A **Read Less** link then appears to collapse it again.
+
+### Overview Section:
+
+A row or grid of four key data fields:
+
+**Start Date:** Example: *“11 May 2024, 12:04:14”.* Shows the date/time when the event is expected to begin or has begun.
+
+**End Date:** Example: *“18 May 2024, 12:04:14”.* If no exact end date is provided, it may display *“Ongoing”*.
+
+**Data Source:** Identifies the organization or system that provided the event info (e.g., “National Hurricane Center (NHC)”).
+
+**Location:** General area affected by the event (e.g., “Mexico (west coast)”).
+
+**Note**: All fields update automatically if new data arrives (e.g., an extended end date).
+
+## Weather Event Severity Dynamics Chart
+
+For **weather** events specifically, a small bar chart shows how the event’s severity might evolve day by day.
+
+**Chart Purpose:** Visualizes the daily severity level (Low, Medium, High) over the event’s duration.
+
+**Axes:**
+
+**Y-Axis**: Low → Medium → High
+
+**X-Axis**: Each bar corresponds to a specific date (e.g., “11 May,” “12 May,” etc.).
+
+**Bar Display:** Each bar’s height aligns with the severity level for that day (e.g., a high bar for “High,” a lower bar for “Medium,” etc.). As new data is ingested, existing bars may shift to represent the current day at the leftmost position, and future days to the right.
+
+**Dynamic Updates:** If the event changes from High to Medium on a certain date, the bars update accordingly. If the event extends its end date, additional bars may appear, or existing bars might shift.
+
+## Weather Event Forecast:
+
+This **five-day forecast** helps you plan around possible disruptions in temperature, wind speed, and precipitation.
+
+**Columns for Each Day** (Next 5 Days):
+
+**Date** (e.g., “11 May”).
+
+**Temperature**: Shows High (red, labeled “H”) and Low (green, labeled “L”) readings (e.g., *H 3°C, L -9°C*).
+
+**Wind Avg. Speed**: Displays an icon plus speed in km/h (e.g., *210 km/h*).
+
+**Precipitation**: Indicates rain, snow, or other conditions, plus an estimate of how many hours (e.g., “Rain (3h)”). A droplet icon may appear to highlight rainy conditions.
+
+**Visual Layout:** Each day is in its own column so you can quickly compare changes from day to day.
+
+## Device Performance Overview:
+
+In *Contxt*, the **Device Performance** tab appears in the Performance Factor Tabs. When you click **Device Performance**, the system displays two key metrics:
+
+**Ping Rate Insights**
+
+**Battery Insights**
+
+These metrics update dynamically based on your **Date Range** and **Product** filters, You can view these insights at the Lane, Route, or Segment/Waypoint level:
+
+**Lane Level**: Shows aggregated data for all shipments traversing the entire lane.
+
+**Route Level**: Filters shipments and device data to a specific route.
+
+**Segment/Waypoint Level**: Focuses on shipments’ ping/battery performance within one segment or waypoint of a route.
+
+**Note**: If you select a particular route in the **Routes** tab, then use the **Segment/Waypoint Selector**, you’ll see device metrics for that specific segment or waypoint only.
+
+## Ping Rate Insights
+
+**Ping Rate Insights** visually show whether shipments meet or exceed your expected device “ping rate” (how often the tracking device sends location updates). This helps you quickly identify if any device is underperforming, sending fewer pings than expected or if the ping rate has drifted beyond acceptable thresholds.
+
+**Expected Ping Rate:**
+
+Defined at lane onboarding (e.g., 60 minutes).
+
+Displayed as a horizontal **dotted line** on the graph.
+
+A 10% tolerance is often applied, meaning any ping rate up to 10% above the baseline could still be considered “Optimal.”
+
+**Average Ping Rate**
+
+The overall average across all shipments (given the current **Date Range** and **Product**).
+
+Appears as a single numeric value in the left panel (e.g., *70m*).
+
+If this average goes up from a prior period and breaches the expected value it’s shown in **red** to indicate a potential issue.
+
+**Tolerance Zones**
+
+**Optimal (\<1.10×Expected)**: For example, if expected is 60m, then anything ≤66m is “Optimal” (blue dots).
+
+**Average (1.10× to 1.25×Expected)**: E.g., >66m but ≤75m (yellow dots).
+
+**Poor (>1.25×Expected)**: E.g., >75m (red dots).
+
+### Graph Visualization:
+
+**X-Axis (Shipment Start Date)**: Each plotted point represents a shipment that started on that date.
+
+**Y-Axis (Ping Rate in Minutes)**: The device’s average ping rate for the entire shipment (or segment/waypoint if you’re in that view).
+
+**Color-Coded Points**:
+
+**Blue**: Optimal
+
+**Yellow**: Average
+
+**Red**: Poor
+
+### Interacting With the Chart:
+
+**Filter Button:** Toggle visibility of **Average Ping Rate** and **Expected Ping Rate** lines.
+
+**Hover Tooltips:** Hovering a point shows the **Shipment ID**, **Recorded Ping Rate Range** (min and max observed), and the **Average Ping Rate**.
+
+**Click to Expand:** An **Expand** icon in the top-right corner enlarges the chart. When expanded, you see a more detailed view, but you cannot click into a specific shipment for deeper info in that mode. There is a possibility for clicking on the review shipment to see the details.
+
+## Battery Insights:
+
+**Battery Insights** display the average battery percentage for each shipment at both **start** and **end** of its journey (or segment/waypoint), helping you spot low-battery conditions or suspicious data (e.g., a device ending with a higher battery level than it started).
+
+### Key Fields & Calculations:
+
+**Avg. Battery % at Start:** The average starting battery percentage for all shipments within your filters.
+
+**Avg. Battery % at End:** The average final battery percentage.
+
+**Data Corrections:** If the “first ping” is null or 0%, *Contxt* looks at subsequent pings until it finds a valid battery reading to represent the start. Similarly, for the end of a shipment, if the last ping is null, the system tries earlier pings. If a shipment’s data is entirely null or zero, it either gets omitted from the averages (null) or included at 0% if that’s the actual data.
+
+## Device Ping Rate Performance Map
+
+The **Device Ping Rate Performance Map** offers a high-level overview of how well tracking devices perform (in terms of ping frequency) along different routes. By default, it shows:
+
+**Routes** are drawn as dotted lines connecting waypoints.
+
+**Clusters of pings** (colored by performance) to indicate where devices either met or missed their expected ping rate.
+
+**Note: This map visualizes ping rate performance along shipping routes.** Use it to quickly spot trouble areas where pings are less frequent than expected—especially helpful if you’re monitoring multiple routes at once.
+
+### Color Coding (Ping Rates):
+
+**Blue**: *Optimal ping rate*: ≤ (Expected Ping Rate × 1.10). Example: If expected is 60 minutes, ≤66 minutes is optimal.
+
+**Yellow:** *Average ping rate*: (Expected Ping Rate × 1.10) to (Expected Ping Rate × 1.25). E.g., >66 but ≤75 minutes.
+
+**Red:** *Poor ping rate*: > (Expected Ping Rate × 1.25). E.g., >75 minutes.
+
+**Single vs. Multiple Routes:** With one route selected, you’ll see that route’s line in a distinct color. The legend clarifies the “Optimal/Average/Poor” thresholds. With more than one route, lines appear in different colors, and the legend is route-based.
+
+**No Data:** If no pings match your filters, the map might appear blank or with an indicator: *“No data found.”*
+
+## Segment/Waypoint Comparison Table
+
+When analyzing device performance at the **Segment/Waypoint** level, the **Comparison Table** helps you compare multiple segments either within the same route or across different routes and see how they differ in shipment counts, ping rates, battery usage, etc.
+
+### Selecting Segments/Waypoints
+
+Each row in the table represents one segment/waypoint from a particular lane/route. By default, the top row is your *currently viewed* segment/waypoint. You can add up to four more (for a total of 5).
+
+### Columns in the Comparison Table
+
+**Lane Name:** E.g., *Los Angeles to Chicago*, *Frankfurt to Louisville*. Includes a color-coded icon matching each lane’s theme in other parts of *Contxt*.
+
+**Route Name:** E.g., *Los Angeles–Port of Oakland–…*, *Frankfurt–Port of Rotterdam–…*.Distinguishes multiple routes within the same lane.
+
+**Shipment Count:** How many shipments passed through this segment/waypoint. A small, always-gray badge might appear if it changed compared to a prior period.
+
+**Avg. Ping Rate** (minutes): Shows the segment-level average ping rate for all shipments traveling that segment (within your date/product filters). A red or green badge indicates whether it has increased or decreased since the last period.
+
+**Average % at Start:** The average battery percentage at the start of the segment. If it’s gone up, the badge is green; if it’s dropped, the badge is red.
+
+**Average % at End:** The average battery percentage at the end of the segment. Badge color uses the same logic (green for improvement, red for decline).
+
+**Average Duration:** The average transit/dwell time for shipments in that segment. If it’s shorter than before, the badge is green; if longer, it’s red.
+
+## Performance Factor Tab Bar - CO2:
+
+When you select **CO₂ Emissions** from the Performance Factor Tabs, *Contxt* displays the relevant analytics for carbon footprint. As with other tabs:
+
+**CO₂ Emissions** appear with a numerical subtitle (e.g., *0.153 metric tons*) representing total emissions for the currently filtered shipments.
+
+A **red triangle** warning icon displays if there is an alert associated with the CO₂ data (e.g., unusually high emissions), although it’s less common to show a warning for CO₂ than for other risk factors.
+
+## Segment/Waypoint Selector
+
+When viewing **CO₂ Emissions** at the **Route** level, the Segment/Waypoint Selector appears as usual, but with CO2 specific metrics:
+
+**Segment/Waypoint Name:** Example: *“Frankfurt to Port of Rotterdam.*
+
+**Performance Data:**
+
+**Shipment Count**: How many shipments used that segment within the chosen Date Range and Product. Shown in **blue** if it has changed from the previous period, or **gray** if no change is detected.
+
+**CO₂ Emissions**: The total CO₂ emission for shipments along that segment. Displayed in metric tons (e.g., *23.345 mt*). **Red** if it has increased from the previous period, **green** if it has decreased, and **gray** if unchanged.
+
+## CO₂ Chart:
+
+This **CO₂ Chart** appears in the lower part of the screen when **CO₂ Emissions** is selected. It’s a **bar chart + line chart** with dual Y-axes:
+
+**Left Y-Axis: CO₂ Emissions (metric tons): Bars** show the total CO₂ for each time bucket (weekly, monthly, quarterly, or yearly), based on your date range and product filters.
+
+**Right Y-Axis: Shipment Count: A line** indicates how many shipments contributed to emissions for each time bucket.
+
+**X-Axis Bucketing:** Automatically scales based on the number of shipments and the selected date range. **Weekly** buckets if the date range is short. **Monthly** or **Quarterly** if the date range is larger.
+
+### Route & Segment Behavior:
+
+**Route Level**: Only the shipments on the selected route are shown.
+
+**Segment/Waypoint Level**: Only shipments that used that segment or waypoint.
+
+## CO₂ Segment Comparison Table
+
+### Table Columns:
+
+**Lane Name:** Uses a distinct color-coded icon matching that lane’s theme in other UI elements. E.g., *Los Angeles to Chicago*, *Frankfurt to Louisville.*
+
+**Route Name:** Clarifies exactly which route is being compared. E.g., *Los Angeles–Port of Oakland–…*, *Frankfurt–Port of Rotterdam.*
+
+**Shipment Count:** Number of shipments traveling that segment for your chosen Date Range and Product. A small, always-gray badge might appear if compared to a previous time period, though its color remains gray even if there is a positive or negative delta from the previous time period.
+
+**CO₂ Emissions:** Displayed in metric tons (e.g., *15.2 mt*). A red, green, or gray badge indicates if emissions went up, down, or stayed the same compared to the previous period.
+
+**Avg. Duration:** The average dwell or transit time (in minutes) for shipments across that segment.
+
+A red, green, or gray badge similarly indicates the direction of change.
+
+## Lane/Route/Shipment Tab Heading:
+
+When you click on the **Routes** tab within a particular lane (e.g., *Lane: Frankfurt to Louisville*), the top header displays:
+
+**Lane Name** and **Breadcrumb:** Shows the path (*Lane Risk Assessment > Lane: Frankfurt to Louisville*) and the selected lane.
+
+**Date Range & Product Filters:** Adjust which shipments are included in all metrics for the routes. If a route has no shipments in that filter, it may be hidden.
+
+**Navigation Buttons: Back** returns you to the Lane Risk Assessment page.
+
+**Download CSV** : exports relevant data for the routes, within the filters applied.
+
+## List of Routes + Pagination:
+
+This section shows all **Identified Routes** for the selected lane, including those that might have zero shipments in the current date/product filter.
+
+**Route Name:** Formatted as a series of waypoints joined by hyphens (e.g., *Frankfurt–Port of Rotterdam–Port of Savannah–Louisville*). If you have a very long route name, it may be truncated with an ellipsis, but hovering (or expanding) reveals the full route name.
+
+**Performance (Mono-Color Dots):**
+
+**One Dot** = Needs Attention
+
+**Two Dots** = Average
+
+**Three Dots** = Optimal
+
+Calculated based on the date range filter. If the route had no shipments in that range, it might be hidden (unless the product filter is off, in which case routes with zero shipments simply appear but have no performance data).
+
+**External Impact:** Displays *High*, *Medium*, or *Low* (red, yellow, green) based on the latest data refresh for external events. This value does **not** change with the date or product filter; it’s a near-real-time indicator of possible disruptions.
+
+### Sorting Logic: By default, the system sorts:
+
+**Route Performance** (Ascending)
+
+*Needs Attention* → *Average* → *Optimal*
+
+**External Impact** (Descending)
+
+*High* → *Medium* → *Low*
+
+**Route Name** (Ascending)
+
+### Pagination:
+
+**Items per Page**: A dropdown to select 10, 20, 30, 40, or 50 items per page (default 10).
+
+**Page Navigation**: Typical “1, 2, 3, …” controls at the bottom.
+
+## Route Metrics:
+
+When you **select** a route from the list, a small metrics panel opens on the right side. It highlights key data for the chosen date range and product:
+
+**Shipment Count**
+
+Number of shipments that fall within the date range and product filter.
+
+**Expected Transit Time**
+
+The contractual or agreed-upon transit duration for that route (e.g., *2d 12h*).
+
+**Avg. Transit Time**
+
+The actual average transit time for those shipments.
+
+**Delayed Shipment Count**
+
+How many shipments missed the Expected Transit Time.
+
+**Shipment Count with Excursions**
+
+Number of shipments that experienced temperature or other quality excursions.
+
+**Total CO₂ Emissions**
+
+Summed for that route, given the current date range/product filters. Units adapt automatically (metric tons or kilotons).
+
+**Route Details** Button
+
+Takes you to the **Route Performance** screen. Any date range or product filter you have set carries over.
+
+## Athena Insights (Short Format for Route)
+
+In the same panel (or just below it), you’ll see **“powered by ATHENA”** with brief AI-driven insights specific to that route. For example:
+
+**Delivery Performance**: Key highlights, potential causes, recommended actions.
+
+**Temperature Performance**: Notable excursions or patterns.
+
+**Device Performance**: Summary of battery/ping issues.
+
+**CO₂ Emissions**: High-level commentary on carbon footprint.
+
+## Low Confidence Routes Heading
+
+Below the identified routes list, you may see **Low Confidence Routes** if the system has flagged certain routes as having insufficient data or representing less than 2.5% of the total shipments for the lane.
+
+**Header & Summary Cards**
+
+Show total shipments across these low-confidence routes, plus overall performance snapshots:
+
+**On-time Delivery Performance**
+
+**Temperature Performance**
+
+**CO₂ Emissions**
+
+**Assign Shipments** Button (Admin-only)
+
+There is also assign shipments button that allows an admin to reassign shipments from low-confidence routes to identified routes or update route definitions as needed.
+
+## Potential Routes Expandable List of Shipments w/ Pagination
+
+Each **Low Confidence Route** row can be expanded to show its shipments:
+
+**Route Name:** Labeled similarly to identified routes (waypoints joined by hyphens).
+
+**Shipment Count:** The number of shipments matched to this route for your current date range and product filter.
+
+**Number of Alerts:** Calculated as the sum of delayed shipments + any temperature excursions, e.g., *Delay + 2 excursions = 3 alerts. Alert will be* shown in red if >0.
+
+When you expand a route:
+
+**Shipment Table:** Columns include *Shipment ID*, *Device ID*, *Start Time*, *Transit Time*, *Status* (On-Time or Delayed), *Avg Temp*, *Min Temp*, *Max Temp*, *# of Excursions*. There is a tag to show the red or green highlights indicate delayed vs. on-time.
+
+**Pagination:** A separate control at the bottom for how many shipments per page (5, 10, 15, 20; default 5).
+
+**Expand All / Collapse All:** Buttons at the top of this section to quickly open or close all listed routes.
+
+## Unresolved Shipments:
+
+At the bottom of the **Routes** tab (or within the Low Confidence area), you may see a **Unresolved Shipments** panel. In addition, there is an indication of how many shipments are excluded from risk calculations due to data quality issues (e.g., missing temperature or location data). There is a button available for the review shipments that the user can use for inspect and correct the shipment if needed.
+
+## Glossary:
+
+1. **Origin**
+
+
+   The starting point of a lane or route. Where the products are picked up or the journey officially begins.
+
+2. **Destination**
+
+
+   The endpoint of a lane, where the shipment arrives and completes its journey.
+
+3. **Lane**
+
+
+   A point-to-point shipping corridor from an Origin to a Destination, possibly involving multiple modes, routes, or products.
+
+4. **Lane ID**
+
+
+   A unique identifier (if provided by the customer) displayed in Contxt’s lane metrics panel. This helps users correlate the lane with external systems or references.
+
+5. **Lane Risk Assessment**
+
+
+   The central page shows the list of lanes, each lane’s performance, and external impact.
+
+6. **Lane Performance**
+
+
+   A Performance factor tab summarizing on-time metrics or temperature compliance across all shipments in a lane. Also includes a color-coded performance status: Needs Attention (1 dot), Average (2 dots), Optimal (3 dots).
+
+7. **Segment**
+
+
+   Within a route, a segment is the portion between consecutive waypoints (e.g., Frankfurt → Port of Rotterdam). Often used interchangeably with “leg.”
+
+8. **Waypoint**
+
+
+   A location (airport, port, distribution center, etc.) that shipments pass through. Connected by segments to form a route. Waypoint-level performance might show dwell times (stops), device events, or temperature data.
+
+9. **Route**
+
+
+   A complete path from origin to destination (including any waypoints or segments). A single lane can contain multiple routes, each with variations in mode or stops.
+
+10. **Route ID**
+
+
+    A unique numeric (or alphanumeric) reference for a route.
+
+11. **Route Verification Status**
+
+
+    A small icon next to a route name indicates if it’s Verified (solid blue check), Pending Verification (hollow circle), or Unverified (gray x).
+
+12. **Low Confidence Route**
+
+
+    A route flagged by Contxt as having too few shipments or insufficient data.
+
+13. **Shipment**
+
+
+    An individual movement of goods from origin to destination, containing attributes like start date/time, transit time, temperature readings, and device logs. Found in the Shipments tab or by drilling into route/segment details.
+
+14. **Shipment ID**
+
+
+    A unique identifier for each shipment (e.g., PX114550). Clicking this in the Shipments tab shows detailed performance data.
+
+15. **Delayed Shipment**
+
+
+    Any shipment whose actual transit time exceeds the expected transit time for its lane or route.
+
+16. **On-Time Delivery**
+
+
+    Shipments that meet or beat the Expected Transit Time. Part of the “Delivery Performance” metrics in the platform.
+
+17. **Unresolved Shipments**
+
+
+    Shipments omitted from standard performance calculations because of missing or invalid data (e.g., no location, no temperature). Users can click “Review Shipments” to investigate or fix data issues.
+
+18. **Device Performance**
+
+
+    A Performance Factor Tab focusing on battery and ping rate metrics. Helps users see whether devices are consistently updating location data and whether battery thresholds are met.
+
+19. **Ping Rate**
+
+
+    How often a device “pings” its location. Typically expressed in minutes. If a ping rate is significantly above the expected threshold (e.g., >25%), the route or shipment may flag “Needs Attention.”
+
+20. **Expected Ping Rate**
+
+
+    A baseline interval (e.g., 60 minutes) at which the tracking device is meant to report location. Deviations above 10%, 25%, etc. may be flagged as Average or Needs Attention.
+
+21. **Expected Transit Time**
+
+
+    The contractual or scheduled duration for a lane or route. Used to classify shipments as On-Time or Delayed.
+
+22. **Temperature Performance**
+
+
+    A Performance factor tab and set of metrics concerning temp excursions (above or below a product’s thresholds).
+
+23. **Excursion**
+
+
+    An event where the temperature goes above or below the acceptable range for a product. Counted at the shipment, route, or segment level, as well as aggregated across an entire lane.
+
+24. **External Events (Impact)**
+
+
+    Weather-, geopolitical-, or other disruptions that may affect shipments. Contxt calls these High, Medium, Low, or No Events. Displayed in the external impact tab.
+
+25. **Mode of Transportation**
+
+
+    The travel method (Air, Ocean, Road, or Multimode if multiple methods exist). Appears in tags or labels within lane/route details.
+
+26. **Multimode**
+
+
+    A tag indicating that more than one mode (e.g., road + air) is used along a lane or route.
+
+27. **Packaging Performance**
+
+
+    A performance factor tab indicates a feature that assesses the performance of the packaging during the shipment.
+
+28. **Comparison Mode**
+
+
+    An optional view for Segments/Waypoints (or sometimes shipments) that places multiple items side by side in a table or multi-line chart. It is often used to compare performance metrics across up to five segments/waypoints.
+
+29. **Athena Insights**
+
+
+    AI-powered summaries that offer data-driven recommendations and highlight areas such as on-time delivery, temperature performance, device performance, packaging status, or external impacts (events).
+
+30. **Advanced Filters**
+
+
+    A more detailed filtering mechanism (e.g., in Shipments or External Events) that allows sorting and filtering by multiple attributes such as route type (high confidence, low confidence) and other advanced search parameters.
+
+31. **Last Data Refresh**
+
+
+    A timestamp (e.g., 2024-08-06 at 12:45 PM UTC) is shown in many page headers or components to confirm when Contxt last updated its data. All metrics, charts, or external events reflect that point in time.
+
+32. **Account Activation**
+
+
+    The process by which a new user sets their Contxt password after being invited by their organization’s administrator. Involves receiving an automated email, clicking Activate, and creating credentials.
