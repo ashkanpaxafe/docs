@@ -1,8 +1,7 @@
 ---
 title: "Knowledge base part 1"
+mode: "wide"
 ---
-
-# Product Overview
 
 Contxt is a risk management platform powered by artificial intelligence (AI). It empowers supply chain leaders to proactively predict, prevent, and resolve risks in their distribution networks. Contxt evaluates shipping lanes to proactively identify and address vulnerabilities. In this way, organizations can better protect their shipments, reduce costs associated with delays or damage, and maintain higher levels of quality assurance.
 
@@ -10,36 +9,29 @@ In **Contxt**, a lane represents a specific transportation route used to ship pr
 
 * **Origin**
 
-
   The starting point of a shipment, where products are first picked up or loaded.
 
 * **Destination**
-
 
   The endpoint where products are delivered, completing the journey.
 
 * **Mode of Transportation**
 
-
   The method(s) used to transport products, such as Air, Ocean, or Road. A single lane can include multiple modes.
 
 * **Product**
-
 
   The goods moving along a lane. Multiple product types can be associated with a single lane.
 
 * **Waypoint**
 
-
   Any stop or location along a route where goods are picked up, transferred, or delivered (e.g., distribution centers, transit hubs, or final delivery locations).
 
 * **Segment**
 
-
   The portion of a route between two consecutive waypoints, representing the actual path taken by shipments.
 
 * **Route**
-
 
   A complete path from the Origin to the Destination. This may include multiple waypoints, segments, and transportation modes. A lane can have more than one valid route.
 
@@ -51,26 +43,23 @@ This section walks you through activating your Contxt account, resetting your pa
 
 1. **Check Your Email**
 
-
    After your company’s Contxt administrator adds you as a user, you will receive an automated email from Contxt. If you don’t see it in your inbox, check your spam or junk folder.
 
 2. **Whitelist the Sender**
 
-
-   To ensure you receive all account-related messages and alerts, add 
+   To ensure you receive all account-related messages and alerts, add
 
    [support@paxafe.com](mailto:support@paxafe.com)
 
-    to your list of trusted senders (also known as your email whitelist).
+   to your list of trusted senders (also known as your email whitelist).
 
 3. **Activate Your Account**
 
-
-   Open the email and click the 
+   Open the email and click the
 
    **Activate**
 
-    button. You will be directed to a secure page to set your password.
+   button. You will be directed to a secure page to set your password.
 
 Once activated, you can log in and begin exploring Contxt. If you ever forget your password, you can reset it at any time—details on that process are covered in the next section.
 
@@ -124,9 +113,13 @@ The **My Profile** page is where users update personal information, modify time 
 
 The Lane Risk Assessment page is the central hub for monitoring and managing the performance of your shipping lanes. By default, you are directed to this page when you log into *Contxt*, but you can also access it at any time by clicking the Lane Risk Assessment icon on the left navigation menu. Below is an overview of each component on this page.
 
+![](/b1.png)
+
 ### Lane List Header (Filters and Search)
 
 At the top of the Lane Risk Assessment page, you’ll find a set of filters and a search bar. These tools allow you to locate and view only the lanes relevant to your needs.
+
+![](/b2.png)
 
 #### **Origin & Destination**
 
@@ -260,6 +253,8 @@ In the lower-right corner of the metrics panel, you will see a section labeled *
 
 When user click on a lane from the Lane Risk Assessment page, user will arrive at a dedicated performance view. The header at the top of this page provides essential information about the selected lane (or route, or shipment) and includes several interactive elements.
 
+![](/b3.png)
+
 ### Breadcrumbs
 
 **Navigation Path**
@@ -338,6 +333,8 @@ All subsequent charts and metrics on the page update instantly according to your
 
 Below the main header, you’ll find a row of “tabs” presenting key performance factors for the currently viewed lane, route, or segment.
 
+![](/b4.png)
+
 ### **Lane Performance**
 
 **Subtitle**: Shows the level of performance (*Needs Attention*, *Average*, or *Optimal*).
@@ -370,6 +367,8 @@ Lane Overview is your navigational anchor for any lane, route, or shipment detai
 
 If you open a **Routes** tab and select a route, you may see a visual flow of its segments or waypoints. This interactive timeline lets you examine each hop from origin to destination.
 
+![](/b5.png)
+
 ### **Back to Routes List:**
 
 A button at the top-left corner returns you to the route overview for the current lane. Your date range and product filters remain intact.
@@ -381,6 +380,8 @@ The route name (e.g., “Route: Frankfurt-Port of Rotterdam-Port of Savannah-Por
 ### **Route Verification Status:**
 
 A small icon (solid check, dotted circle, or X) indicates whether the route is *Verified*, *Pending Verification*, or *Unverified*. Hover over the icon to see a tooltip explaining its status.
+
+![](/b6.png)
 
 **Segment/Waypont Cards:**
 
@@ -395,6 +396,8 @@ A checkbox or toggle labeled *Compare* allows you to see how this segment/waypoi
 ## On-Time Delivery Performance Metrics
 
 This component focuses on how well your shipments are meeting their delivery performance.
+
+![](/b7.png)
 
 ### Metrics Displayed:
 
@@ -415,6 +418,8 @@ Clicking the **Open in new tab** icon takes you to the Shipments tab, pre-filter
 *Gray* indicates a neutral or improved metric.
 
 **Hover Tooltips:** Provide details on the current value, a comparison to a previous period, and any relevant notes about the timeframe. the comparison tooltip can provide details as shown for current vs previous time frame.
+
+![](/b8.png)
 
 ### Route & Segment metrics calculation Differences:
 
@@ -440,7 +445,7 @@ By navigating through these components, you can gain a comprehensive view of how
 
 The Shipments Transit Time graph provides a visual overview of how long shipments are taking to travel from their origin to destination and whether they meet, exceed, or fall below the *Expected Transit Time*. By hovering or clicking on data points, you can discover detailed information about each shipment.
 
-
+![](/b9.png)
 
 ### Graph Overview: A combined line-and-scatter chart showing:
 
@@ -482,13 +487,19 @@ A small **Filter** button (funnel icon) in the top-right corner of the graph all
 
 **Expected Transit Time**
 
+![](/b10.png)
+
 By checking or unchecking these boxes, you can simplify the view to focus on only the data that matters most to you. **Note**: If you have multiple Expected Transit Times for a lane, you’ll see a note telling you to *“Select a Route”* rather than a single line for the expected time.
 
 ### Interacting with the Graph:
 
 When you hover over any data point, a tooltip appears showing the Shipment ID and its Transit Time.
 
+![](/b11.png)
+
 For the *trend lines*, you’ll see average or daily transit times based on your selected grouping (e.g., daily, weekly). Click to View Shipment Details: Clicking on a shipment data point (red or green dot) opens a Detailed Shipment Information panel on the same page if you’re in Expanded Mode (see below).
+
+![](/b12.png)
 
 In the details panel, you can see:
 
@@ -518,6 +529,8 @@ A **Review Shipment** button that navigates you to the *Shipments* tab (pre-filt
 
 **Single Shipment**If only one shipment meets your filters, the average and trend lines adapt accordingly. You’ll typically see a single data point with minimal lines.
 
+![](/b13.png)
+
 ### Route vs. Segment/Waypoint Views:
 
 **Route-Level:** The graph is filtered to include only shipments on the selected route. *Expected Transit Time* remains visible if that route has exactly one contracted lead time.
@@ -530,15 +543,23 @@ If comparing multiple segments, the chart becomes a Segment Transit Time Trend o
 
 The hover tooltip shows each segment’s or waypoint’s time on that date.
 
+![](/b14.png)
+
+![](/b15.png)
+
 ### Comparison Mode (Segments/Waypoints Only)
 
 When using the **Compare Segment/Waypoint** feature (as covered in the *Segment/Waypoint Selector* section), this chart transforms into a multi-line comparison:
+
+![](/b16.png)
 
 Each selected segment or waypoint is assigned a different colored line.
 
 Hovering over the chart displays all lines’ data at that particular date.
 
 The chart label changes to **“Segment Transit Time Trend”** or **“Waypoint Dwell Time Trend.”**
+
+![](/b17.png)
 
 Clicking data points is disabled in comparison mode since multiple segments are displayed.
 
@@ -550,11 +571,15 @@ Clicking data points is disabled in comparison mode since multiple segments are 
 
 **Expand Mode for Deep Analysis:** If the chart is crowded, click **Expand** to see a larger view. This is especially helpful when comparing multiple lines or a longer date range.
 
+![](/b18.png)
+
 **Navigate to Shipments:** For deeper investigation (e.g., device battery levels or temperature excursions), click on a point in normal (non-expanded) mode, then select **Review Shipment** in the details panel.
 
 ## Temperature Performance Metrics
 
 Use the **Temperature Performance** component to quickly assess how your shipments are adhering to the required temperature range. These metrics also help you pinpoint where excursions might be occurring.
+
+![](/b19.png)
 
 ### Metrics & Descriptions:
 
@@ -614,6 +639,10 @@ At **Segment/Waypoint level**, results focus on shipments specifically traveling
 
 The **Shipments Temperature Profile** graph visualizes each shipment’s recorded temperature over time, enabling you to spot excursions at a glance. By default, this chart uses a *boxplot* approach to show median, quartiles, whiskers, and excursion points.
 
+![](/b20.png)
+
+![](/b21.png)
+
 ### Chart Elements:
 
 **Lower Limit & Upper Limit:** Two horizontal lines (blue for lower, red for upper) indicating the acceptable temperature range for the *selected product*.
@@ -650,11 +679,17 @@ At **Segment/Waypoint level**, it only includes the temperature data for the por
 
 When comparing multiple segments or waypoints:
 
+![](/b22.png)
+
+![](/b23.png)
+
 The chart label becomes **“Avg. Temperature Profile”** and each line represents the average temperature for a particular segment/waypoint. Hovering on the graph displays the temperature for each line at a specific date.
 
 ## Segment/Waypoint Comparison Table:
 
 This table allows you to compare performance metrics—like delays or excursions—across different segments or waypoints, even if they belong to different lanes or routes.
+
+![](/b24.png)
 
 ### Selecting Segments/Waypoints
 
